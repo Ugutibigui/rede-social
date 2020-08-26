@@ -17,6 +17,10 @@ body{
     margin-left: 120px;
     margin-top: -14px;
 }
+.nameSujestao{
+    background-color: aquamarine;
+    border: solid aqua 5px;
+}
 .users{
     background-color: chartreuse;
     display: inline;
@@ -24,6 +28,22 @@ body{
 }
 .users:hover{
     background-color: blueviolet;
+}
+.seusAmigos{
+    background-color: chartreuse;
+    margin-left: 15px;
+    display: table;
+}
+.seusAmigos:hover{
+    background-color: blueviolet;
+}
+.conversar{
+    display: flex;
+    margin-left: 120px;
+    margin-top: -18px;
+}
+.todosAmigos{
+    margin-top: 9px;
 }
 .barra{
     background: linear-gradient(#526ba1, #3b5998);
@@ -33,6 +53,14 @@ body{
     font-size: 30px;
     display: block;
     
+}
+.text-seusAmigos{
+    background-color: aquamarine;
+    border: solid aqua 5px;
+    
+}
+.Amigos{
+    margin-top: 8px;
 }
 .texto-barra{
     margin-left: 42%;
@@ -90,3 +118,15 @@ body{
 .publicar{
     margin-left: 44%;
 }
+.postagem-paragrafo{
+    width: 600px;
+    border: solid 5px #03dffc;
+    background-color: #435673;
+    padding: 10px;
+    margin: 0 auto;
+    margin-top: 5px;
+    font-size: 25px;
+    color: white;
+    
+}
+

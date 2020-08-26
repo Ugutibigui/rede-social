@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="iconeFace.png" type="image/x-icon">
-    <link rel="stylesheet" href="logado.css">
-    <link rel="stylesheet" href="reset.css">
+    <link rel="shortcut icon" href="../images/iconeFace.png" type="image/x-icon">
+    <link rel="stylesheet" href="../style/logado.css">
+    <link rel="stylesheet" href="../style/reset.css">
     <title>Logado</title>
 </head>
 <body>
     <div class="barra">
         <h1 class="texto-barra">VOCÊ ESTA LOGADO</h1> 
         <p id="usuario-que-logou" class="usuario-que-logou"> </p>
-        <button class="sair"><a href="main.html">Sair</a></button>  
+        <button class="sair"><a href="../pages/main.html">Sair</a></button>  
     </div>
     <div>
         <h4 id="UsuarioLogou"></h4>
@@ -24,9 +24,12 @@
             </div>
         </div>
 
-        <div id="Amigos">
-            <h2>Seus Amigos</h2>
+        <div id="Amigos" class="Amigos">
+            <h2 class="text-seusAmigos">Seus Amigos</h2>
+            <div class="todosAmigos">
             <div id="seuAmigo">
+
+            </div>
             </div>
         </div>    
     </div>
@@ -47,22 +50,34 @@
         </div>
         <button class="publicar" onclick="publicar()">Publicar</button>
     </div>
+    <div id="pub" class="pub">
+        
+    </div>
 
     <!--<div id="divResultado">-->
     </div>
 
-    <script src="Back.js.js"></script>
+    <script src="../js/Back.js.js"></script>
     <script>
        var usuarios = JSON.parse( localStorage.getItem("usuarios"))
        var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
        
        let todosAmigos = []
+       let todosAmigosId = []
 
-       function publicar() {
-        var para = document.createElement("div");
-        var p = document.getElementById("pub-escrita")
-        console.log(p)
-        para.appendChild(p)
+       function publicar() { 
+        var para = document.createElement("p");
+        para.classList.add("postagem-paragrafo")
+        var pub = document.getElementById("pub")
+        var p = document.getElementById("pub-escrita").value
+        para.innerHTML = p
+        pub.appendChild(para)
+        console.log("Publicou")
+
+        if(p === ""){
+            alert("Sua publicação está vazia")
+            return
+        }
         }
 
        
@@ -88,14 +103,27 @@
             }
         }
             function adicionarAmigo(ADuser , ADnome){
-                 alert(`Adicionando amigo com id ${ADuser}`) 
-                alert(ADnome)
-               // todosAmigos.push(ADuser)
-                // console.log(todosAmigos)
-
-                // if(todosAmigos === ADuser){
-               //      alert("ja esta adicionado")
-               //  }
+                alert(`Adicionando o amigo ${ADnome}`)
+                todosAmigos.push(ADnome)
+                todosAmigosId.push(ADuser)
+                var seuAmigo = document.getElementById("seuAmigo")
+                
+                for(let i=0; i<todosAmigos.length; i++){
+                    var todosSeusAmigos = document.getElementById("seuAmigo")
+                    var nomeUsuario = document.createElement("p")
+                    nomeUsuario.classList.add("seusAmigos")
+                    nomeUsuario.innerHTML = todosAmigos[i]
+                    let botaoConversa = document.createElement("button")
+                    botaoConversa.innerHTML = "Conversar"
+                    botaoConversa.classList.add("conversar")
+                    todosSeusAmigos.appendChild(nomeUsuario)
+                    todosSeusAmigos.appendChild(botaoConversa)
+                    console.log(todosAmigos[i])
+                    
+                }
+                
+               console.log(todosAmigos)
+            
              }
              
              
@@ -121,6 +149,7 @@
          //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
        // }
         
+       
 
     </script>
 </body>

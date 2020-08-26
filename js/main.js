@@ -98,7 +98,7 @@ function entrar(){
         }else Userlogado = false;
     }
         if(Userlogado){
-            window.location.href = "page.html"
+            window.location.href = "../pages/page.html"
         }else alert ("Nome de usuario ou senha incorretos")
 
 
