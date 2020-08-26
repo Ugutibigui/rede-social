@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="iconeFace.png" type="image/x-icon">
+    <link rel="stylesheet" href="logado.css">
+    <link rel="stylesheet" href="reset.css">
+    <title>Logado</title>
+</head>
+<body>
+    <div class="barra">
+        <h1 class="texto-barra">VOCÊ ESTA LOGADO</h1> 
+        <p id="usuario-que-logou" class="usuario-que-logou"> </p>
+        <button class="sair"><a href="main.html">Sair</a></button>  
+    </div>
+    <div>
+        <h4 id="UsuarioLogou"></h4>
+    </div>
+    <div class="pessoas">
+        <div id="sugestaoAmigos">
+            <h2 class="nameSujestao">Sugestão de amigos</h2>
+            <div id="usuariosAdicionar">
+            </div>
+        </div>
+
+        <div id="Amigos">
+            <h2>Seus Amigos</h2>
+            <div id="seuAmigo">
+            </div>
+        </div>    
+    </div>
+
+    <!--<div class="publicar">
+        <label>Título:</label>
+        <input type="text" id="txtTitulo"/>
+        <label>Subtítulo:</label>
+        <input type="text" id="txtSubtitulo"/>
+        <button id="btnEnviar" onclick="Publicar()">Publicar</button>
+    </div>-->
+    
+<!--Isso só vai aparecer se o botão for clicado-->
+    <div id="geral">
+        <div class="postagem">
+            <h4>Oque você está pensando?</h2>
+            <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30" rows="10"></textarea>
+        </div>
+        <button class="publicar" onclick="publicar()">Publicar</button>
+    </div>
+
+    <!--<div id="divResultado">-->
+    </div>
+
+    <script src="Back.js.js"></script>
+    <script>
+       var usuarios = JSON.parse( localStorage.getItem("usuarios"))
+       var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
+       
+       let todosAmigos = []
+
+       function publicar() {
+        var para = document.createElement("div");
+        var p = document.getElementById("pub-escrita")
+        console.log(p)
+        para.appendChild(p)
+        }
+
+       
+
+        function carregaSugestoesAmigos(){
+            let container = document.getElementById("usuariosAdicionar")
+            let usuariosAmigos = usuariosAtuais();
+
+            for(let i=0; i<usuariosAmigos.length; i++){
+                //cria paragrafo que aparece nome do usuario
+                
+                let nomeUsuario = document.createElement("p")
+                nomeUsuario.innerHTML = usuariosAmigos[i].nomeUsuario;
+                nomeUsuario.className = "users"
+                let botaoAdicionar = document.createElement("button");
+                botaoAdicionar.innerHTML = "Adicionar"
+                console.log(usuariosAmigos[i])
+                botaoAdicionar.setAttribute("onclick",`adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                botaoAdicionar.className = "botaoAdicionar"
+
+                container.appendChild(nomeUsuario);
+                container.appendChild(botaoAdicionar);
+            }
+        }
+            function adicionarAmigo(ADuser , ADnome){
+                 alert(`Adicionando amigo com id ${ADuser}`) 
+                alert(ADnome)
+               // todosAmigos.push(ADuser)
+                // console.log(todosAmigos)
+
+                // if(todosAmigos === ADuser){
+               //      alert("ja esta adicionado")
+               //  }
+             }
+             
+             
+        function carregarAmigos(){
+            let todos = document.getElementById("seuAmigo")
+            let nomeAmigo = document.createElement("p")
+            nomeAmigo.innerHTML = usuariosAtuais[i].nomeAmigo
+            todos.appendChild(nomeAmigo);
+        }   
+       
+
+        function Adicionar(){
+            usuarios[0].amigos = [1]
+        }
+        
+        carregaSugestoesAmigos();    
+        
+
+        //function Publicar(){
+            //var titulo = document.getElementById("txtTitulo").value;
+            //var subtitulo = document.getElementById("txtSubtitulo").value;
+           // var div = document.getElementById("divResultado");
+         //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
+       // }
+        
+
+    </script>
+</body>
+</html>
