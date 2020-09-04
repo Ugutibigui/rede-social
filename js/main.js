@@ -1,3 +1,5 @@
+var usuarios = JSON.parse( localStorage.getItem("usuarios"))
+
 var usuarios
 if (localStorage.getItem("usuarios") !== null) {
 usuarios = JSON.parse( localStorage.getItem("usuarios"))
@@ -112,3 +114,5 @@ function entrar(){
 function mostrarUsuario(){
     console.log(usuarios)
 }
+
+console.log(usuarios)

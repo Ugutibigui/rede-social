@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/iconeFace.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/logado.css">
     <link rel="stylesheet" href="../style/reset.css">
     <title>Logado</title>
 </head>
-<body>
-    <div class="barra">
-        <h1 class="texto-barra">VOCÊ ESTA LOGADO</h1> 
+<body class="fundo" id="fundo">
+    <div class="barra" id="barra">
+        <h1 id="textos" class="texto-barra"></h1>
         <p id="usuario-que-logou" class="usuario-que-logou"> </p>
-        <button class="sair"><a href="../pages/main.html">Sair</a></button>  
+        <button class="sair"><a href="../pages/main.html">Sair</a></button>
+        <img  src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo"> 
+        <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
     </div>
     <div>
         <h4 id="UsuarioLogou"></h4>
     </div>
+ 
     <div class="pessoas">
         <div id="sugestaoAmigos">
             <h2 class="nameSujestao">Sugestão de amigos</h2>
@@ -45,47 +49,174 @@
 <!--Isso só vai aparecer se o botão for clicado-->
     <div id="geral">
         <div class="postagem">
-            <h4>Oque você está pensando?</h2>
+            <button onclick="publicPic()" id="pbc-img">P/ Imagem</button>
+            <button onclick="publicText()" id="pbc-text">P/ Texto</button>
+            <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
+            
             <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30" rows="10"></textarea>
         </div>
-        <button class="publicar" onclick="publicar()">Publicar</button>
+        <button class="publicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
+        <button class="publicarImagem" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
+        <button class="publicarVideo" onclick="publicarVideo()" id="pbc-text2">Publicar Video</button>
     </div>
+
+    <div id="publicacao">
     <div id="pub" class="pub">
-        
+        <div id="text-dentro-pub"></div>
+    </div>
     </div>
 
     <!--<div id="divResultado">-->
     </div>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
     <script src="../js/Back.js.js"></script>
     <script>
        var usuarios = JSON.parse( localStorage.getItem("usuarios"))
        var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
-       
+       var pubs = JSON.parse(localStorage.getItem("pubs")) || []
+
        let todosAmigos = []
        let todosAmigosId = []
+   
+ 
+        function publicarVideo(){
+            var data = document.createElement("div")
+            var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
+            data.classList.add("dataPub")
+            data.innerHTML = d;
+            console.log(data)
+            console.log(d)
+            var publicador = document.createElement("p")
+            publicador.innerHTML = "Bryan"
+            publicador.classList.add("nomeDeQuemPublicou")
+            var para = document.createElement("source")
+            var video = document.createElement("video")
+           // var deletar = document.createElement("button")
+           // deletar.innerHTML = "deletar"
+           // deletar.setAttribute("onclick","deletar();");
+            video.classList.add("postagem-video")
+            var pub = document.getElementById("pub")
+            var p = document.getElementById("pub-escrita").value
+            video
+            para.src = p
+            para.type = "video/mp4"
+            pub.appendChild(data)
+            pub.appendChild(publicador)
+            pub.appendChild(video)
+
+           // pub.appendChild(deletar)
+            console.log("publicou Video")
+            video.controls = "controls"
+            console.log(video)
+            if(p === ""){
+            alert("Sua publicação está vazia")
+            return
+
+          }
+
+         // publicacoes.push(publicarVideo);
+          //localStorage.setItem('publicacoes', JSON.stringify(publicacoes));
+          //return true;
+          pubs.push(pub)
+          localStorage.setItem('pubs' , JSON.stringify(pubs))
+
+        }
+
+        function publicPic(){
+            var publicacao = document.getElementById("oquePublicar")
+            var desaparece = document.getElementById("pbc-img")
+            var Aparece = document.getElementById("pbc-text")
+            desaparece.style.opacity = "0"
+            Aparece.style.opacity = "100%"
+            publicacao.innerHTML = "Insira o endereço de sua imagem"
+
+        }
+
+        function publicText(){
+            var publicacao =  document.getElementById("oquePublicar")
+            var desaparece = document.getElementById("pbc-text")
+            var Aparece = document.getElementById("pbc-img")
+            desaparece.style.opacity = "0"
+            Aparece.style.opacity = "100%"
+            publicacao.innerHTML = "Oque você está pensando?"
+        }
 
        function publicar() { 
+        var publicador = document.createElement("p")
+         publicador.innerHTML = "Bryan"
+         publicador.classList.add("nomeDeQuemPublicou")   
+
         var para = document.createElement("p");
+        var data = document.createElement("div")
+        var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
+        data.classList.add("dataPub")
+        data.innerHTML = d;
+        console.log(data)
+        console.log(d)
         para.classList.add("postagem-paragrafo")
         var pub = document.getElementById("pub")
+        var publicacao =  document.getElementById("publicacao")
+        //var deletar = document.createElement("button")
+        //deletar.innerHTML = "Deletar"
         var p = document.getElementById("pub-escrita").value
         para.innerHTML = p
+        para.style.fontFamily = "Arial"
+        //pub.appendChild("data")
+        //publicacao.appendChild(deletar)
+        pub.appendChild(data)
+        pub.appendChild(publicador)
         pub.appendChild(para)
+       
+
         console.log("Publicou")
+        //deletar.setAttribute("onclick", `${pub.pop}`) //Arrumar o delete 
+        //console.log(deletar)
+       // console.log(data)
 
         if(p === ""){
             alert("Sua publicação está vazia")
             return
-        }
+          }
+          pubs.push(pub)
+          localStorage.setItem('pubs' , JSON.stringify(pubs))
         }
 
-       
+        function publicarImagem(){
+            var data = document.createElement("div")
+            var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
+            data.classList.add("dataPub")
+            data.innerHTML = d;
+            var publicador = document.createElement("p")
+            publicador.innerHTML = "Bryan"
+            publicador.classList.add("nomeDeQuemPublicou") 
+            console.log(data)
+            console.log(d)
+            var para = document.createElement("img")
+            para.classList.add("postagem-img")
+            var pub = document.getElementById("pub")
+            var p = document.getElementById("pub-escrita").value
+            para.src = p
+            pub.appendChild(data)
+            pub.appendChild(publicador)
+            pub.appendChild(para)
+            
+            console.log("publicou imagem")
+
+            if(p === ""){
+            alert("Sua publicação está vazia")
+            return
+          }
+          pubs.push(para)
+          localStorage.setItem('pubs' , JSON.stringify(pubs))
+        }
+
+      
 
         function carregaSugestoesAmigos(){
             let container = document.getElementById("usuariosAdicionar")
             let usuariosAmigos = usuariosAtuais();
-
+            container.innerHTML = ""
             for(let i=0; i<usuariosAmigos.length; i++){
                 //cria paragrafo que aparece nome do usuario
                 
@@ -97,19 +228,23 @@
                 console.log(usuariosAmigos[i])
                 botaoAdicionar.setAttribute("onclick",`adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
                 botaoAdicionar.className = "botaoAdicionar"
-
+                var inexistente =  todosAmigosId.indexOf(usuariosAmigos[i].id)
+                if (inexistente === -1) {
                 container.appendChild(nomeUsuario);
-                container.appendChild(botaoAdicionar);
+                container.appendChild(botaoAdicionar)
+                }
+
             }
+                console.log(todosAmigosId)
         }
             function adicionarAmigo(ADuser , ADnome){
                 alert(`Adicionando o amigo ${ADnome}`)
                 todosAmigos.push(ADnome)
                 todosAmigosId.push(ADuser)
-                var seuAmigo = document.getElementById("seuAmigo")
-                
+                var todosSeusAmigos = document.getElementById("seuAmigo")
+                todosSeusAmigos.innerHTML = ""
+
                 for(let i=0; i<todosAmigos.length; i++){
-                    var todosSeusAmigos = document.getElementById("seuAmigo")
                     var nomeUsuario = document.createElement("p")
                     nomeUsuario.classList.add("seusAmigos")
                     nomeUsuario.innerHTML = todosAmigos[i]
@@ -119,12 +254,16 @@
                     todosSeusAmigos.appendChild(nomeUsuario)
                     todosSeusAmigos.appendChild(botaoConversa)
                     console.log(todosAmigos[i])
-                    
-                }
+                    } 
+                 carregaSugestoesAmigos()
                 
+                }
+
+
+                console.log(todosAmigos.ADnome)
                console.log(todosAmigos)
             
-             }
+             
              
              
         function carregarAmigos(){
@@ -139,17 +278,40 @@
             usuarios[0].amigos = [1]
         }
         
-        carregaSugestoesAmigos();    
-        
-
         //function Publicar(){
             //var titulo = document.getElementById("txtTitulo").value;
             //var subtitulo = document.getElementById("txtSubtitulo").value;
            // var div = document.getElementById("divResultado");
          //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
        // }
-        
-       
+
+        $(document.body).ready(function(){
+        textos = ['Compartilhe fotos', 'Publique textos', 'Conheça pessoas', 'Converse Muito', 'Divirta-se' , 'Assista e compartilhe videos'];
+        $('#textos').text(textos[0]);
+        setInterval(function() {
+            var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
+            $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
+        },
+        1500); // segundo
+    });
+
+    function ModoEscuro(){
+        var body = document.getElementById("fundo")
+        var publicacaoColor = document.getElementById("geral")
+        body.style.backgroundImage = "url('../images/img.png')"
+        publicacaoColor.style.backgroundColor = "#143258"
+        publicacaoColor.style.border = "solid 10px #00b8ff"
+    }
+    function ModoClaro(){
+        var body =  document.getElementById("fundo")
+        var publicacaoColor = document.getElementById("geral")
+        body.style.backgroundImage = "url('../images/img2.jpg')"
+        body.style.backgroundSize = "1920px 1080px"
+        publicacaoColor.style.backgroundColor = "rgb(215 233 255)"
+        publicacaoColor.style.border = "solid 10px #00b8ff"
+    }
+
+        carregaSugestoesAmigos(); 
 
     </script>
 </body>
