@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,18 +10,19 @@
     <link rel="stylesheet" href="../style/reset.css">
     <title>Logado</title>
 </head>
+
 <body class="fundo" id="fundo">
     <div class="barra" id="barra">
         <h1 id="textos" class="texto-barra"></h1>
         <p id="usuario-que-logou" class="usuario-que-logou"> </p>
-        <button class="sair"><a href="../pages/main.html">Sair</a></button>
-        <img  src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo"> 
+        <button class="sair" onclick="localStorage.setItem('usuarioAtual' , JSON.stringify('')); location.href='../pages/main.html'">Sair</button>
+        <img src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo">
         <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
     </div>
     <div>
         <h4 id="UsuarioLogou"></h4>
     </div>
- 
+
     <div class="pessoas">
         <div id="sugestaoAmigos">
             <h2 class="nameSujestao">Sugestão de amigos</h2>
@@ -31,11 +33,11 @@
         <div id="Amigos" class="Amigos">
             <h2 class="text-seusAmigos">Seus Amigos</h2>
             <div class="todosAmigos">
-            <div id="seuAmigo">
+                <div id="seuAmigo">
 
+                </div>
             </div>
-            </div>
-        </div>    
+        </div>
     </div>
 
     <!--<div class="publicar">
@@ -45,15 +47,20 @@
         <input type="text" id="txtSubtitulo"/>
         <button id="btnEnviar" onclick="Publicar()">Publicar</button>
     </div>-->
-    
-<!--Isso só vai aparecer se o botão for clicado-->
+
+    <!--Isso só vai aparecer se o botão for clicado-->
     <div id="geral">
         <div class="postagem">
             <button onclick="publicPic()" id="pbc-img">P/ Imagem</button>
             <button onclick="publicText()" id="pbc-text">P/ Texto</button>
-            <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
-            
-            <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30" rows="10"></textarea>
+            <div class="textinhos">
+                <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
+                    <h4 id="pessoaLogada" class="pessoaLogada">Teste</h4>
+            </div>
+            <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30"
+                rows="10"></textarea>
+            <textarea style="resize: none;" id="pub-image" placeholder="Insira o Link da imagem"></textarea>
+            <textarea style="resize: none;" id="pub-vide" placeholder="Insira o link do video"></textarea>
         </div>
         <button class="publicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
         <button class="publicarImagem" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
@@ -61,9 +68,9 @@
     </div>
 
     <div id="publicacao">
-    <div id="pub" class="pub">
-        <div id="text-dentro-pub"></div>
-    </div>
+        <div id="pub" class="pub">
+            <div id="text-dentro-pub"></div>
+        </div>
     </div>
 
     <!--<div id="divResultado">-->
@@ -72,58 +79,93 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
     <script src="../js/Back.js.js"></script>
     <script>
-       var usuarios = JSON.parse( localStorage.getItem("usuarios"))
-       var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
-       var pubs = JSON.parse(localStorage.getItem("pubs")) || []
+        var usuarios = JSON.parse(localStorage.getItem("usuarios"))
+        var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
+        var usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual")) || []
+        if(!usuarioLogado) location.href = "../pages/main.html" 
 
-       let todosAmigos = []
-       let todosAmigosId = []
-   
- 
-        function publicarVideo(){
-            var data = document.createElement("div")
-            var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
-            data.classList.add("dataPub")
-            data.innerHTML = d;
-            console.log(data)
-            console.log(d)
-            var publicador = document.createElement("p")
-            publicador.innerHTML = "Bryan"
-            publicador.classList.add("nomeDeQuemPublicou")
-            var para = document.createElement("source")
-            var video = document.createElement("video")
-           // var deletar = document.createElement("button")
-           // deletar.innerHTML = "deletar"
-           // deletar.setAttribute("onclick","deletar();");
-            video.classList.add("postagem-video")
-            var pub = document.getElementById("pub")
-            var p = document.getElementById("pub-escrita").value
-            video
-            para.src = p
-            para.type = "video/mp4"
-            pub.appendChild(data)
-            pub.appendChild(publicador)
-            pub.appendChild(video)
+        let todosAmigos = []
+        let todosAmigosId = []
 
-           // pub.appendChild(deletar)
-            console.log("publicou Video")
-            video.controls = "controls"
-            console.log(video)
-            if(p === ""){
-            alert("Sua publicação está vazia")
-            return
 
-          }
+        function carregaPostsText() {
+            let postagens = JSON.parse(localStorage.getItem("posts"))
+            if (!postagens) return
+            let quantidade = postagens.length
+            let postagem = document.getElementById("pub")
+            for (let i = 0; i < quantidade; i++) {
 
-         // publicacoes.push(publicarVideo);
-          //localStorage.setItem('publicacoes', JSON.stringify(publicacoes));
-          //return true;
-          pubs.push(pub)
-          localStorage.setItem('pubs' , JSON.stringify(pubs))
+                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
+                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
+                postagem.innerHTML += `<p class="postagem-paragrafo">${postagens[i].content}</p>`
+            }
+        }
+        carregaPostsText()
 
+        function carregaPostsVide(){
+            let postagens = JSON.parse(localStorage.getItem("postsVide"))
+            if (!postagens) return
+            let quantidade = postagens.length
+            let postagem = document.getElementById("pub")
+            for (let i = 0; i < quantidade; i++) {
+
+                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
+                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
+                postagem.innerHTML += `<video controls class="postagem-video"><source src="${postagens[i].content}" type="video/mp4"></source></video>`
+            }
         }
 
-        function publicPic(){
+        carregaPostsVide()
+
+        function carregaPostsImg(){
+            let postagens = JSON.parse(localStorage.getItem("postsImg"))
+            if (!postagens) return
+            let quantidade = postagens.length
+            let postagem = document.getElementById("pub")
+            for (let i = 0; i < quantidade; i++) {
+
+                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
+                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
+                postagem.innerHTML += `<img class="postagem-img" src="${postagens[i].content}">`
+            }
+        }
+
+        carregaPostsImg()
+
+        function carregaAmiguinhos(){
+            let amigosAparece = JSON.parse(localStorage.getItem("amiguitos"))
+            if (!amigosAparece) return
+            let amigosTamanho = amigosAparece.length
+            let seuAmigoLocal = document.getElementById("seuAmigo")
+            for (let i = 0; i < amigosTamanho; i++){
+                amigosAparece.innerHTML += `<p class="seusAmigos">${amigosAparece[i].amigos}</p>`
+                amigosAparece.innerHTML += `<button class="conversar"></button>`
+            }
+        }
+       carregaAmiguinhos()
+
+        function publicarVideo() {
+            let publicador = usuarioLogado
+            let p = document.getElementById("pub-vide").value
+            if (!p) return alert("Sua publicação está vazia")
+            let publicacoes = JSON.parse(localStorage.getItem("postsVide"))
+            if (!publicacoes) publicacoes = []
+            let data = new Date()
+            data = data.toString()
+            let postagem = document.getElementById("pub")
+            postagem.innerHTML += `<div class="dataPub">${data}</div>`
+            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
+            postagem.innerHTML += `<video controls class="postagem-video"><source src="${p}" type="video/mp4"></source></video>`
+            let vide = {
+                from: publicador,
+                content: p,
+                data: data
+            }
+            publicacoes.push(vide)
+            localStorage.setItem("postsVide", JSON.stringify(publicacoes))
+        }
+
+        function publicPic() {
             var publicacao = document.getElementById("oquePublicar")
             var desaparece = document.getElementById("pbc-img")
             var Aparece = document.getElementById("pbc-text")
@@ -133,8 +175,8 @@
 
         }
 
-        function publicText(){
-            var publicacao =  document.getElementById("oquePublicar")
+        function publicText() {
+            var publicacao = document.getElementById("oquePublicar")
             var desaparece = document.getElementById("pbc-text")
             var Aparece = document.getElementById("pbc-img")
             desaparece.style.opacity = "0"
@@ -142,177 +184,182 @@
             publicacao.innerHTML = "Oque você está pensando?"
         }
 
-       function publicar() { 
-        var publicador = document.createElement("p")
-         publicador.innerHTML = "Bryan"
-         publicador.classList.add("nomeDeQuemPublicou")   
-
-        var para = document.createElement("p");
-        var data = document.createElement("div")
-        var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
-        data.classList.add("dataPub")
-        data.innerHTML = d;
-        console.log(data)
-        console.log(d)
-        para.classList.add("postagem-paragrafo")
-        var pub = document.getElementById("pub")
-        var publicacao =  document.getElementById("publicacao")
-        //var deletar = document.createElement("button")
-        //deletar.innerHTML = "Deletar"
-        var p = document.getElementById("pub-escrita").value
-        para.innerHTML = p
-        para.style.fontFamily = "Arial"
-        //pub.appendChild("data")
-        //publicacao.appendChild(deletar)
-        pub.appendChild(data)
-        pub.appendChild(publicador)
-        pub.appendChild(para)
-       
-
-        console.log("Publicou")
-        //deletar.setAttribute("onclick", `${pub.pop}`) //Arrumar o delete 
-        //console.log(deletar)
-       // console.log(data)
-
-        if(p === ""){
-            alert("Sua publicação está vazia")
-            return
-          }
-          pubs.push(pub)
-          localStorage.setItem('pubs' , JSON.stringify(pubs))
-        }
-
-        function publicarImagem(){
-            var data = document.createElement("div")
-            var d = new Date()//encontrar como fazer para a data aparecer no appendCHild
-            data.classList.add("dataPub")
-            data.innerHTML = d;
-            var publicador = document.createElement("p")
-            publicador.innerHTML = "Bryan"
-            publicador.classList.add("nomeDeQuemPublicou") 
-            console.log(data)
-            console.log(d)
-            var para = document.createElement("img")
-            para.classList.add("postagem-img")
-            var pub = document.getElementById("pub")
-            var p = document.getElementById("pub-escrita").value
-            para.src = p
-            pub.appendChild(data)
-            pub.appendChild(publicador)
-            pub.appendChild(para)
+        function publicar() {
+            let publicador = usuarioLogado
+            let p = document.getElementById("pub-escrita").value
+            if (!p) return alert("Sua publicação está vazia")
+            let publicacoes = JSON.parse(localStorage.getItem("posts"))
+            if (!publicacoes) publicacoes = []
+            let data = new Date()
+            data = data.toString()
+            let postagem = document.getElementById("pub")
+            postagem.innerHTML += `<div class="dataPub">${data}</div>`
+            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
+            postagem.innerHTML += `<p class="postagem-paragrafo">${p}</p>`
+            let msg = {
+                from: publicador,
+                content: p,
+                data: data
+            }
+            publicacoes.push(msg)
+            localStorage.setItem("posts", JSON.stringify(publicacoes))
             
-            console.log("publicou imagem")
-
-            if(p === ""){
-            alert("Sua publicação está vazia")
-            return
-          }
-          pubs.push(para)
-          localStorage.setItem('pubs' , JSON.stringify(pubs))
         }
 
-      
+        function publicarImagem() {
+            let publicador = usuarioLogado
+            let p = document.getElementById("pub-image").value
+            if (!p) return alert("Sua publicação está vazia")
+            let publicacoes = JSON.parse(localStorage.getItem("postsImg"))
+            if (!publicacoes) publicacoes = []
+            let data = new Date()
+            data = data.toString()
+            let postagem = document.getElementById("pub")
+            postagem.innerHTML += `<div class="dataPub">${data}</div>`
+            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
+            postagem.innerHTML += `<img class="postagem-img" src="${p}">`
+            let Img = {
+                from: publicador,
+                content: p,
+                data: data
+            }
+            publicacoes.push(Img)
+            localStorage.setItem("postsImg", JSON.stringify(publicacoes))
+        }
 
-        function carregaSugestoesAmigos(){
+
+
+        function carregaSugestoesAmigos() {
             let container = document.getElementById("usuariosAdicionar")
             let usuariosAmigos = usuariosAtuais();
             container.innerHTML = ""
-            for(let i=0; i<usuariosAmigos.length; i++){
+            for (let i = 0; i < usuariosAmigos.length; i++) {
                 //cria paragrafo que aparece nome do usuario
+                if (usuarioLogado !== usuarios[i].nomeUsuario) {
+                    container.innerHTML += `<div><p class="users">${usuariosAmigos[i].nomeUsuario}</p><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div>`
+                    let botaoAdicionar = document.getElementById("botaoAdicionar")
+                    botaoAdicionar.setAttribute("onclick", `adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                    var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
+                    console.log(inexistente)
+                    if (inexistente === -1) {
+                        container.innerHTML += `<div><p class="users">${usuariosAmigos[i].nomeUsuario}</p><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div>`
+                        // container.appendChild(nomeUsuario);
+                        // container.appendChild(botaoAdicionar)
+                    }
                 
-                let nomeUsuario = document.createElement("p")
-                nomeUsuario.innerHTML = usuariosAmigos[i].nomeUsuario;
-                nomeUsuario.className = "users"
-                let botaoAdicionar = document.createElement("button");
-                botaoAdicionar.innerHTML = "Adicionar"
-                console.log(usuariosAmigos[i])
-                botaoAdicionar.setAttribute("onclick",`adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
-                botaoAdicionar.className = "botaoAdicionar"
-                var inexistente =  todosAmigosId.indexOf(usuariosAmigos[i].id)
-                if (inexistente === -1) {
-                container.appendChild(nomeUsuario);
-                container.appendChild(botaoAdicionar)
-                }
 
+
+                    // let nomeUsuario = document.createElement("p")
+                    // nomeUsuario.innerHTML = usuariosAmigos[i].nomeUsuario;
+                    // nomeUsuario.className = "users"
+                    // let botaoAdicionar = document.createElement("button");
+                    // botaoAdicionar.innerHTML = "Adicionar"
+                    // console.log(usuariosAmigos[i])
+                    // botaoAdicionar.setAttribute("onclick", `adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                    // botaoAdicionar.className = "botaoAdicionar"
+                    // var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
+                    // if (inexistente === -1) {
+                    //     container.appendChild(nomeUsuario);
+                    //     container.appendChild(botaoAdicionar)
+                    // }
+                }
             }
-                console.log(todosAmigosId)
+            console.log(todosAmigosId)
         }
-            function adicionarAmigo(ADuser , ADnome){
-                alert(`Adicionando o amigo ${ADnome}`)
-                todosAmigos.push(ADnome)
-                todosAmigosId.push(ADuser)
-                var todosSeusAmigos = document.getElementById("seuAmigo")
-                todosSeusAmigos.innerHTML = ""
-
-                for(let i=0; i<todosAmigos.length; i++){
-                    var nomeUsuario = document.createElement("p")
-                    nomeUsuario.classList.add("seusAmigos")
-                    nomeUsuario.innerHTML = todosAmigos[i]
-                    let botaoConversa = document.createElement("button")
-                    botaoConversa.innerHTML = "Conversar"
-                    botaoConversa.classList.add("conversar")
-                    todosSeusAmigos.appendChild(nomeUsuario)
-                    todosSeusAmigos.appendChild(botaoConversa)
-                    console.log(todosAmigos[i])
-                    } 
-                 carregaSugestoesAmigos()
-                
-                }
+        function adicionarAmigo(ADuser, ADnome) {
+            alert(`Adicionando o amigo ${ADnome}`)
+            todosAmigos.push(ADnome)
+            todosAmigosId.push(ADuser)
+            var todosSeusAmigos = document.getElementById("seuAmigo")
+            todosSeusAmigos.innerHTML = ""
+            let amiguinhos = JSON.parse(localStorage.getItem("amiguitos"))
+            for (let i = 0; i < todosAmigos.length; i++) {
+                todosSeusAmigos.innerHTML = `<div><p class="seusAmigos">${todosAmigos[i]}</p><button class="conversar">Conversar</button></div>`
 
 
-                console.log(todosAmigos.ADnome)
-               console.log(todosAmigos)
-            
-             
-             
-             
-        function carregarAmigos(){
+
+
+
+                // var nomeUsuario = document.createElement("p")
+                // nomeUsuario.classList.add("seusAmigos")
+                // nomeUsuario.innerHTML = todosAmigos[i]
+                // let botaoConversa = document.createElement("button")
+                // botaoConversa.innerHTML = "Conversar"
+                // botaoConversa.classList.add("conversar")
+                // todosSeusAmigos.appendChild(nomeUsuario)
+                // todosSeusAmigos.appendChild(botaoConversa)
+                // console.log(todosAmigos[i])
+            }
+
+            let meagles = {
+                amigos: todosAmigos
+            }
+            localStorage.setItem("amiguitos", JSON.stringify(meagles))
+
+            carregaSugestoesAmigos()
+
+        }
+
+
+        console.log(todosAmigos.ADnome)
+        console.log(todosAmigos)
+
+
+
+
+        function carregarAmigos() {
             let todos = document.getElementById("seuAmigo")
             let nomeAmigo = document.createElement("p")
             nomeAmigo.innerHTML = usuariosAtuais[i].nomeAmigo
             todos.appendChild(nomeAmigo);
-        }   
-       
+        }
 
-        function Adicionar(){
+
+        function Adicionar() {
             usuarios[0].amigos = [1]
         }
-        
+
         //function Publicar(){
-            //var titulo = document.getElementById("txtTitulo").value;
-            //var subtitulo = document.getElementById("txtSubtitulo").value;
-           // var div = document.getElementById("divResultado");
-         //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
-       // }
+        //var titulo = document.getElementById("txtTitulo").value;
+        //var subtitulo = document.getElementById("txtSubtitulo").value;
+        // var div = document.getElementById("divResultado");
+        //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
+        // }
 
-        $(document.body).ready(function(){
-        textos = ['Compartilhe fotos', 'Publique textos', 'Conheça pessoas', 'Converse Muito', 'Divirta-se' , 'Assista e compartilhe videos'];
-        $('#textos').text(textos[0]);
-        setInterval(function() {
-            var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
-            $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
-        },
-        1500); // segundo
-    });
+        $(document.body).ready(function () {
+            textos = ['Compartilhe fotos', 'Publique textos', 'Conheça pessoas', 'Converse Muito', 'Divirta-se', 'Assista e compartilhe videos'];
+            $('#textos').text(textos[0]);
+            setInterval(function () {
+                var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
+                $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
+            },
+                1500); // segundo
+        });
 
-    function ModoEscuro(){
-        var body = document.getElementById("fundo")
-        var publicacaoColor = document.getElementById("geral")
-        body.style.backgroundImage = "url('../images/img.png')"
-        publicacaoColor.style.backgroundColor = "#143258"
-        publicacaoColor.style.border = "solid 10px #00b8ff"
-    }
-    function ModoClaro(){
-        var body =  document.getElementById("fundo")
-        var publicacaoColor = document.getElementById("geral")
-        body.style.backgroundImage = "url('../images/img2.jpg')"
-        body.style.backgroundSize = "1920px 1080px"
-        publicacaoColor.style.backgroundColor = "rgb(215 233 255)"
-        publicacaoColor.style.border = "solid 10px #00b8ff"
-    }
+        function ModoEscuro() {
+            var body = document.getElementById("fundo")
+            var publicacaoColor = document.getElementById("geral")
+            body.style.backgroundImage = "url('../images/img.png')"
+            publicacaoColor.style.backgroundColor = "#143258"
+            publicacaoColor.style.border = "solid 10px #00b8ff"
+        }
+        function ModoClaro() {
+            var body = document.getElementById("fundo")
+            var publicacaoColor = document.getElementById("geral")
+            body.style.backgroundImage = "url('../images/img2.jpg')"
+            body.style.backgroundSize = "1920px 1080px"
+            publicacaoColor.style.backgroundColor = "rgb(215 233 255)"
+            publicacaoColor.style.border = "solid 10px #00b8ff"
+        }
 
-        carregaSugestoesAmigos(); 
+        function pessoaQueLogou() {
+            pessoaLogada = document.getElementById("pessoaLogada")
+            pessoaLogada.innerHTML = usuarioLogado
+        }
+        pessoaQueLogou();
+        carregaSugestoesAmigos();
 
     </script>
 </body>
+
 </html>

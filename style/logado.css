@@ -108,7 +108,7 @@
     padding: 10px;
     margin: 0 auto;
     margin-top: 5px;
-    background-color: rgb(215, 233, 255);
+    background-color: rgb(20, 50, 88);
 }
 .postagem{
     padding: 5px;
@@ -228,5 +228,13 @@
     width: 220px;
     text-align: center;
     box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+
+}
+.textinhos{
+    display: flex;
+    
+}
+.pessoaLogada{
+    margin-left: 50%;
 
 }

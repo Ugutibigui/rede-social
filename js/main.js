@@ -1,3 +1,6 @@
+let usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual"))
+if(usuarioLogado.length > 0) location.href = "../pages/page.html"
+
 var usuarios = JSON.parse( localStorage.getItem("usuarios"))
 
 var usuarios
@@ -93,14 +96,18 @@ function entrar(){
 
       var Userlogado = false;
       let i = 0  
+      let usuarioAtual = nomeUsuario
      for(; i < usuarios.length; i++){
         if(usuarios[i].nomeUsuario === nomeUsuario && usuarios[i].senha === senha){
           Userlogado = true;
+          localStorage.setItem("usuarioAtual" , JSON.stringify(usuarioAtual))
             console.log(i)
+            break
         }else Userlogado = false;
     }
         if(Userlogado){
             window.location.href = "../pages/page.html"
+            
         }else alert ("Nome de usuario ou senha incorretos")
 
 
