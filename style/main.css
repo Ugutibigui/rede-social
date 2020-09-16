@@ -1,29 +1,31 @@
-body{
+body {
     background: linear-gradient(white, #D3D8E8);
 }
-header{
-    
+
+header {
     background: linear-gradient(#526ba1, #3b5998);
     height: 80px;
     padding: 8px 0;
-    }
-.center{
+}
+
+.center {
     max-width: 1100px;
     padding: 0 2%;
     margin: 0 auto;
 }
-main{
-  align-items: center;
-  
+
+main {
+    align-items: center;
 }
-a{
-    color:#003385;
-    
+
+a {
+    color: #003385;
 }
-.logo{
+
+.logo {
     color: white;
     font-size: 40px;
-    font-family: Helvetica , Roboto;
+    font-family: Helvetica, Roboto;
     margin: 0;
     position: absolute;
     left: 20%;
@@ -31,13 +33,13 @@ a{
     margin-right: -50%;
     float: left;
     font-weight: normal;
-    
-    
 }
-.form{
-    float: right ;
+
+.form {
+    float: right;
 }
-.logar{
+
+.logar {
     margin: 0;
     position: absolute;
     left: 50%;
@@ -45,29 +47,32 @@ a{
     margin-right: -50%;
     display: flex;
 }
-.Senha{
+
+.Senha {
     margin-left: 5px;
 }
-.letras{
+
+.letras {
     color: white;
-    
 }
-.leters{
+
+.leters {
     color: white;
-    
 }
-.cxx2{
+
+.cxx2 {
     margin-left: 5px;
 }
-.btn-entrar{
+
+.btn-entrar {
     background-color: cornflowerblue;
     color: white;
     margin-left: 10px;
     max-height: 25px;
-    margin-top:12px;
- 
+    margin-top: 12px;
 }
-.mostrarUsuarios{
+
+.mostrarUsuarios {
     margin-left: 10px;
     background-color: crimson;
     color: white;
@@ -77,16 +82,19 @@ a{
     max-height: 25px;
     margin-top: 11px;
 }
-.mostrarUsuarios:hover{
+
+.mostrarUsuarios:hover {
     background-color: darkmagenta;
 }
-.mostrarSenha{
+
+.mostrarSenha {
     padding: 10px 5px;
     background-color: #405d9a;
     border-radius: 10px;
     cursor: pointer;
 }
-.mostrarSenhan{
+
+.mostrarSenhan {
     background-color: blue;
     border-radius: 10px;
     cursor: pointer;
@@ -94,34 +102,38 @@ a{
     margin-top: 14px;
     max-height: 25px;
 }
-.mostrarSenha:hover{
+
+.mostrarSenha:hover {
     background-color: white;
-
-}
-.mostrarSenhan:hover{
-    background-color:white;
 }
 
-.cadastro{
+.mostrarSenhan:hover {
+    background-color: white;
+}
+
+.cadastro {
     margin: 0;
     position: absolute;
     left: 54.5%;
     margin-top: -16%;
     margin-right: -50%;
-    
 }
-.text-cadastro{
+
+.text-cadastro {
     color: black;
 }
-.tx-1{
+
+.tx-1 {
     font-size: 35px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.tx-2{
+
+.tx-2 {
     font-size: 20px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-.caixa{
+
+.caixa {
     width: 110%;
     height: 15%;
     font-size: 18px;
@@ -134,7 +146,7 @@ a{
     position: relative;
 }
 
-.texto-chama{
+.texto-chama {
     font-family: Arial black, Helvetica, sans-serif;
     font-size: 23px;
     margin: 0;
@@ -144,14 +156,17 @@ a{
     margin-right: -50%;
     color: #003385;
 }
-img{
+
+img {
     margin-top: 7%;
     margin-left: 19%;
 }
-.caiza{
+
+.caiza {
     margin-top: 10px;
 }
-.btn-cadastro{
+
+.btn-cadastro {
     background-color: #69a74e;
     box-shadow: inset 0 1px 1px #a4e388;
     border-color: #3b6e22 #3b6e22 #2c5115;
@@ -161,53 +176,131 @@ img{
     cursor: pointer;
     padding: 7px 20px;
     min-width: 194px;
-    font-size:20px;
+    font-size: 20px;
 }
-.btn-cadastro:hover{
+
+.btn-cadastro:hover {
     background-color: darkgreen;
 }
-.terms{
+
+.terms {
     font-size: 12px;
     margin-top: 10px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(92, 92, 100);
 }
 
-.termos{
+.termos {
     color: #003385;
     cursor: pointer;
     text-decoration: #ccc;
 }
-section{
-    
+
+section {
     background-color: slategrey;
 }
 
-section.linguagem{
+section.linguagem {
     padding: 30px 0;
     background: white;
     margin-top: 10%;
 }
-section.linguagem a{
+
+section.linguagem a {
     color: #365899;
     text-decoration: none;
     font-size: 14px;
 }
-section.linguagem .center{
+
+section.linguagem .center {
     padding-bottom: 10px;
     border-bottom: 1px solid #ccc;
     padding-left: 8px;
     padding-right: 8px;
 }
-section.linguagem a.selected-lingua{
+
+section.linguagem a.selected-lingua {
     color: #737373;
 }
-.btn-entrar{
+
+.btn-entrar {
     cursor: pointer;
 }
-.btn-entrar:hover{
+
+.btn-entrar:hover {
     background-color: #003385;
 }
-.espace{
+
+.espace {
     margin: 15px 25px 15px;
+}
+
+.adicionarFoto {
+    margin-top: 12px;
+    border: solid black 2px;
+    height: 19%;
+    font-size: 18px;
+    padding: 8px 10px;
+    border-color: #bdc7d8;
+    border-radius: 5px;
+    width: 377px;
+    background-color: transparent;
+}
+
+.textoAdicionarFoto {
+    font-size: 20px;
+}
+
+.botaoAdicionarFoto {
+    margin-top: 10px;
+}
+
+.paraAdicionarFoto {
+    display: none;
+    z-index: 2;
+    background-color: red;
+    width: 1200px;
+    height: 600px;
+    position: absolute;
+    top: 18%;
+    left: 22%;
+    margin-top: -50px;
+    margin-left: -50px;
+    position: fixed;
+    overflow: auto;
+    color: white;
+    font-family: Burbank Big Condensed;
+}
+
+.tituloCaixaAddFoto {
+    font-size: 40px;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.infoCaixaAddFoto {
+    font-size: 25px;
+    text-align: center;
+}
+
+.infosFoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.caixaTextoFoto {
+    width: 550px;
+    height: 50px;
+    font-size: 20px;
+}
+
+.botaoConfirmaAddFoto {
+    height: 56px;
+    cursor: pointer;
+}
+
+.botaoConfirmaAddFoto:hover {
+    background-color: turquoise;
 }

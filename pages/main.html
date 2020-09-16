@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt_br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,79 +9,96 @@
     <link rel="stylesheet" href="../style/reset.css">
     <link rel="stylesheet" href="../style/main.css">
 </head>
+
 <body>
-    <header>
-        <div class="center">
-            <div class="logo">
-                <h1>Facebook</h1>
-            </div> 
-            <div class="logar">
-                <div class="NomeUsuario , input">
-                    <h2 for="nomeUsuario" class="letras">Nome Usuario:</h2>
-                    <input id="nomeUsuario" name="nomeUsuario"/>
+    <div class="paraAdicionarFoto" id="minhaDiv">
+        <h1 class="tituloCaixaAddFoto">Adicionar foto de perfil</h1>
+        <h4 class="infoCaixaAddFoto">Na caixa de texto a baixo adicione o link de sua imagem</h4>
+        <div class="infosFoto">
+            <input type="text" class="caixaTextoFoto" id="caixaTextoFoto">
+            <button class="botaoConfirmaAddFoto" onclick="fecharAddFoto()">Confirmar</button>
+        </div>
+    </div>
+    <div class="fundoFalso">
+
+        <header>
+            <div class="center">
+                <div class="logo">
+                    <h1>Facebook</h1>
                 </div>
-                
-                <div class="Senha , input">    
-                    <h2 for="senha" class="letras , cxx2">Senha:</h2>
-                    <input id="senha" type="password" name="senha" class="inpt-letras"/>
-                    
-                </div>
-                
+                <div class="logar">
+                    <div class="NomeUsuario , input">
+                        <h2 for="nomeUsuario" class="letras">Nome Usuario:</h2>
+                        <input id="nomeUsuario" name="nomeUsuario" />
+                    </div>
+
+                    <div class="Senha , input">
+                        <h2 for="senha" class="letras , cxx2">Senha:</h2>
+                        <input id="senha" type="password" name="senha" class="inpt-letras" />
+
+                    </div>
+
                     <button type="button" onclick="mostrarSenha()" class="mostrarSenhan">👀</button>
                     <br>
                     <button onclick="entrar()" class="btn-entrar">Entrar</button>
                     <button onclick="mostrarUsuario()" class="mostrarUsuarios">Mostra usuarios</button>
-                    
+
+                </div>
             </div>
-        </div>
-    </header>
-    <main>
-        <div class="texto-chama">
-            <h3>Connect with friends and the <br/> world around you on Facebook.</h3>
-        </div>
-        <div>
-            <img src="../images/facebookLogin.png" alt="Essa imagem">
-        </div>
-        <div class="cadastro">
-            <div class="text-cadastro">
-                <h1 class="tx-1">Sign Up</h1>
-                <h2 class="tx-2">It’s quick and easy.</h2>
-            </div><br/>
-            <input id="nomeUsuarios" name="nomeUsuarios" class="caixa" placeholder="Nome de Usuario"/>
-            <br/>
-            <input id="senhas" type="password" name="senhas"class="caixa , caiza" placeholder="Senha"/>
-            <button type="button" onclick="mostrarSenhas()" class="mostrarSenha">👀</button><br/>
-            <h4 class="terms">By clicking Sign Up, you agree to our <a class="termos" href="#">Terms, Data Policy</a> and<br> <a class="termos" href="#">Cookies Policy.</a> You may receive SMS Notifications from us and<br> can opt out any time.</h4>
-            <button onclick="cadastrarNovoUsuario()" class="btn-cadastro">Casdastrar</button>
-        
-        </div>
-    </main>   
-    <section class="linguagem">
-        <div class="center">
-            <a class="selected-lingua , espace" href="#">Inglês</a>
-            <a  class="espace" href="#">Português</a>
-            <a class="espace" href="#">Russo</a>
-            <a class="espace" href="#">Arabe</a>
-            <a class="espace" href="#">Polones</a>
-            <a class="espace" href="#">Espanhol</a>
-            <a class="espace" href="#">Latin</a>
-            <a class="espace" href="#">JAPONES</a>
-            <a class="espace" href="#">Rupestre</a>
-            <a class="espace" href="#">Libras</a>
-            <br>
-            <br>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-            <a class="espace" href="#">Português</a>
-        </div>
-    </section> 
-    
+        </header>
+        <main>
+            <div class="texto-chama">
+                <h3>Connect with friends and the <br/> world around you on Facebook.</h3>
+            </div>
+            <div>
+                <img src="../images/facebookLogin.png" alt="Essa imagem">
+            </div>
+            <div class="cadastro">
+                <div class="text-cadastro">
+                    <h1 class="tx-1">Sign Up</h1>
+                    <h2 class="tx-2">It’s quick and easy.</h2>
+                </div><br/>
+                <input id="nomeUsuarios" name="nomeUsuarios" class="caixa" placeholder="Nome de Usuario" />
+                <br/>
+                <input id="senhas" type="password" name="senhas" class="caixa , caiza" placeholder="Senha" />
+                <button type="button" onclick="mostrarSenhas()" class="mostrarSenha">👀</button><br/>
+                <div class="adicionarFoto">
+                    <h4 class="textoAdicionarFoto">Adicione Também uma foto</h4>
+                    <button class="botaoAdicionarFoto" onclick="abrirAbaFoto()">Foto</button>
+                </div>
+                <h4 class="terms">By clicking Sign Up, you agree to our <a class="termos" href="#">Terms, Data Policy</a> and<br> <a class="termos" href="#">Cookies Policy.</a> You may receive SMS Notifications from us and<br> can opt out any time.</h4>
+
+                <button onclick="cadastrarNovoUsuario()" class="btn-cadastro">Casdastrar</button>
+
+            </div>
+        </main>
+        <section class="linguagem">
+            <div class="center">
+                <a class="selected-lingua , espace" href="#">Inglês</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Russo</a>
+                <a class="espace" href="#">Arabe</a>
+                <a class="espace" href="#">Polones</a>
+                <a class="espace" href="#">Espanhol</a>
+                <a class="espace" href="#">Latin</a>
+                <a class="espace" href="#">JAPONES</a>
+                <a class="espace" href="#">Rupestre</a>
+                <a class="espace" href="#">Libras</a>
+                <br>
+                <br>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+                <a class="espace" href="#">Português</a>
+            </div>
+        </section>
+    </div>
 
     <script src="../js/main.js"></script>
 </body>
+
 </html>

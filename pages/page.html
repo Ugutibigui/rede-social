@@ -8,39 +8,74 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style/logado.css">
     <link rel="stylesheet" href="../style/reset.css">
-    <title>Logado</title>
+    <title id="tituloPage">Logado</title>
 </head>
 
 <body class="fundo" id="fundo">
-    <div class="barra" id="barra">
-        <h1 id="textos" class="texto-barra"></h1>
-        <p id="usuario-que-logou" class="usuario-que-logou"> </p>
-        <button class="sair" onclick="localStorage.setItem('usuarioAtual' , JSON.stringify('')); location.href='../pages/main.html'">Sair</button>
-        <img src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo">
-        <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
-    </div>
     <div>
-        <h4 id="UsuarioLogou"></h4>
-    </div>
-
-    <div class="pessoas">
-        <div id="sugestaoAmigos">
-            <h2 class="nameSujestao">Sugestão de amigos</h2>
-            <div id="usuariosAdicionar">
+        <div id="minhaDiv">
+            <button onclick="fechaPerfil()" class="fechaPerfil">Fechar</button>
+            <div class="capa" id="capaPerfil"></div>
+            <div class="paraFoto fotoPerfil" id="paraFoto">
             </div>
+            <h1 class="nomePerfil" id="nomePerfil"></h1>
         </div>
+    </div>
+    <div class="fundoFalso" id="fundoFalso">
+        <div class="barra" id="barra">
+            <h1 id="textos" class="texto-barra"></h1>
+            <p id="usuario-que-logou" class="usuario-que-logou"> </p>
+            <img src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo">
+            <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
 
-        <div id="Amigos" class="Amigos">
-            <h2 class="text-seusAmigos">Seus Amigos</h2>
-            <div class="todosAmigos">
-                <div id="seuAmigo">
-
+            <div class="duvidas">
+                <h1>
+                    <a class="help"href="../pages/help.html">?</a> </h1>
+            </div>
+            <div class="menu_btn configs">
+                <a href="#"></a>
+                <h1 class="iconMenu">☟</h1>
+                <div class="submenu">
+                    <ul>
+                        <li class="item">
+                            <div class="titleItem" onclick="Mudarestado('minhaDiv')">Perfil</div>
+                        </li>
+                        <li class="item">
+                            <div class="titleItem">Item</div>
+                        </li>
+                        <li class="item">
+                            <div class="titleItem">Item</div>
+                        </li>
+                        <li class="item">
+                            <div class="titleItem">Item</div>
+                        </li>
+                        <li class="item" onclick="localStorage.setItem('usuarioAtual' , JSON.stringify('')); location.href='../pages/main.html'">
+                            <div class="titleItem">Sair</div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!--<div class="publicar">
+
+        <div class="pessoas">
+            <div id="sugestaoAmigos">
+                <h2 class="nameSujestao">Sugestão de amigos</h2>
+                <div id="usuariosAdicionar">
+                </div>
+            </div>
+
+            <div id="Amigos" class="Amigos">
+                <h2 class="text-seusAmigos">Seus Amigos</h2>
+                <div class="todosAmigos">
+                    <div id="seuAmigo">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--<div class="publicar">
         <label>Título:</label>
         <input type="text" id="txtTitulo"/>
         <label>Subtítulo:</label>
@@ -48,44 +83,46 @@
         <button id="btnEnviar" onclick="Publicar()">Publicar</button>
     </div>-->
 
-    <!--Isso só vai aparecer se o botão for clicado-->
-    <div id="geral">
-        <div class="postagem">
-            <button onclick="publicPic()" id="pbc-img">P/ Imagem</button>
-            <button onclick="publicText()" id="pbc-text">P/ Texto</button>
-            <div class="textinhos">
-                <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
-                    <h4 id="pessoaLogada" class="pessoaLogada">Teste</h4>
+        <!--Isso só vai aparecer se o botão for clicado-->
+        <div id="geral">
+            <div class="postagem">
+                <button onclick="publicPic()" id="pbc-img">P/ Imagem</button>
+                <button onclick="publicText()" id="pbc-text">P/ Texto</button>
+                <div class="textinhos">
+                    <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
+                        <h4 id="pessoaLogada" class="pessoaLogada">Teste</h4>
+                </div>
+                <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30" rows="10"></textarea>
+                <textarea style="resize: none;" id="pub-image" placeholder="Insira o Link da imagem"></textarea>
+                <textarea style="resize: none;" id="pub-vide" placeholder="Insira o link do video"></textarea>
             </div>
-            <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30"
-                rows="10"></textarea>
-            <textarea style="resize: none;" id="pub-image" placeholder="Insira o Link da imagem"></textarea>
-            <textarea style="resize: none;" id="pub-vide" placeholder="Insira o link do video"></textarea>
+            <button class="publicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
+            <button class="publicarImagem" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
+            <button class="publicarVideo" onclick="publicarVideo()" id="pbc-text2">Publicar Video</button>
         </div>
-        <button class="publicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
-        <button class="publicarImagem" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
-        <button class="publicarVideo" onclick="publicarVideo()" id="pbc-text2">Publicar Video</button>
-    </div>
 
-    <div id="publicacao">
-        <div id="pub" class="pub">
-            <div id="text-dentro-pub"></div>
+        <div id="publicacao">
+            <div id="pub" class="pub">
+                <div id="text-dentro-pub"></div>
+            </div>
         </div>
-    </div>
 
-    <!--<div id="divResultado">-->
+        <!--<div id="divResultado">-->
     </div>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    </script>
+    <script src="../js/barraCode.js"></script>
     <script src="../js/Back.js.js"></script>
     <script>
         var usuarios = JSON.parse(localStorage.getItem("usuarios"))
         var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
         var usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual")) || []
-        if(!usuarioLogado) location.href = "../pages/main.html" 
+        if (!usuarioLogado.nomeUsuario) location.href = "../pages/main.html"
 
         let todosAmigos = []
         let todosAmigosId = []
+
 
 
         function carregaPostsText() {
@@ -102,7 +139,7 @@
         }
         carregaPostsText()
 
-        function carregaPostsVide(){
+        function carregaPostsVide() {
             let postagens = JSON.parse(localStorage.getItem("postsVide"))
             if (!postagens) return
             let quantidade = postagens.length
@@ -117,7 +154,7 @@
 
         carregaPostsVide()
 
-        function carregaPostsImg(){
+        function carregaPostsImg() {
             let postagens = JSON.parse(localStorage.getItem("postsImg"))
             if (!postagens) return
             let quantidade = postagens.length
@@ -132,20 +169,20 @@
 
         carregaPostsImg()
 
-        function carregaAmiguinhos(){
+        function carregaAmiguinhos() {
             let amigosAparece = JSON.parse(localStorage.getItem("amiguitos"))
             if (!amigosAparece) return
             let amigosTamanho = amigosAparece.length
             let seuAmigoLocal = document.getElementById("seuAmigo")
-            for (let i = 0; i < amigosTamanho; i++){
+            for (let i = 0; i < amigosTamanho; i++) {
                 amigosAparece.innerHTML += `<p class="seusAmigos">${amigosAparece[i].amigos}</p>`
                 amigosAparece.innerHTML += `<button class="conversar"></button>`
             }
         }
-       carregaAmiguinhos()
+        carregaAmiguinhos()
 
         function publicarVideo() {
-            let publicador = usuarioLogado
+            let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-vide").value
             if (!p) return alert("Sua publicação está vazia")
             let publicacoes = JSON.parse(localStorage.getItem("postsVide"))
@@ -185,7 +222,7 @@
         }
 
         function publicar() {
-            let publicador = usuarioLogado
+            let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-escrita").value
             if (!p) return alert("Sua publicação está vazia")
             let publicacoes = JSON.parse(localStorage.getItem("posts"))
@@ -203,11 +240,11 @@
             }
             publicacoes.push(msg)
             localStorage.setItem("posts", JSON.stringify(publicacoes))
-            
+
         }
 
         function publicarImagem() {
-            let publicador = usuarioLogado
+            let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-image").value
             if (!p) return alert("Sua publicação está vazia")
             let publicacoes = JSON.parse(localStorage.getItem("postsImg"))
@@ -235,18 +272,19 @@
             container.innerHTML = ""
             for (let i = 0; i < usuariosAmigos.length; i++) {
                 //cria paragrafo que aparece nome do usuario
-                if (usuarioLogado !== usuarios[i].nomeUsuario) {
-                    container.innerHTML += `<div><p class="users">${usuariosAmigos[i].nomeUsuario}</p><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div>`
-                    let botaoAdicionar = document.getElementById("botaoAdicionar")
-                    botaoAdicionar.setAttribute("onclick", `adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                if (usuarioLogado.nomeUsuario !== usuarios[i].nomeUsuario) {
+                   // container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div></div>`
+                    
                     var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
                     console.log(inexistente)
                     if (inexistente === -1) {
-                        container.innerHTML += `<div><p class="users">${usuariosAmigos[i].nomeUsuario}</p><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div>`
-                        // container.appendChild(nomeUsuario);
-                        // container.appendChild(botaoAdicionar)
+                        container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div></div>`
+                        let botaoAdicionar = document.getElementById("botaoAdicionar")
+                        botaoAdicionar.setAttribute("onclick", `adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                            // container.appendChild(nomeUsuario);
+                            // container.appendChild(botaoAdicionar)
                     }
-                
+
 
 
                     // let nomeUsuario = document.createElement("p")
@@ -266,19 +304,19 @@
             }
             console.log(todosAmigosId)
         }
+        carregaSugestoesAmigos()
+
         function adicionarAmigo(ADuser, ADnome) {
+            carregaSugestoesAmigos()
             alert(`Adicionando o amigo ${ADnome}`)
             todosAmigos.push(ADnome)
             todosAmigosId.push(ADuser)
             var todosSeusAmigos = document.getElementById("seuAmigo")
             todosSeusAmigos.innerHTML = ""
             let amiguinhos = JSON.parse(localStorage.getItem("amiguitos"))
+            carregaSugestoesAmigos()
             for (let i = 0; i < todosAmigos.length; i++) {
-                todosSeusAmigos.innerHTML = `<div><p class="seusAmigos">${todosAmigos[i]}</p><button class="conversar">Conversar</button></div>`
-
-
-
-
+                todosSeusAmigos.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${todosAmigos[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
 
                 // var nomeUsuario = document.createElement("p")
                 // nomeUsuario.classList.add("seusAmigos")
@@ -308,10 +346,12 @@
 
 
         function carregarAmigos() {
-            let todos = document.getElementById("seuAmigo")
-            let nomeAmigo = document.createElement("p")
-            nomeAmigo.innerHTML = usuariosAtuais[i].nomeAmigo
-            todos.appendChild(nomeAmigo);
+            let todosAmigos = document.getElementById("seuAmigo")
+            todosAmigos.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${todosAmigos[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
+            
+            //let nomeAmigo = document.createElement("p")
+            //nomeAmigo.innerHTML = usuariosAtuais[i].nomeAmigo
+            //todos.appendChild(nomeAmigo);
         }
 
 
@@ -319,20 +359,15 @@
             usuarios[0].amigos = [1]
         }
 
-        //function Publicar(){
-        //var titulo = document.getElementById("txtTitulo").value;
-        //var subtitulo = document.getElementById("txtSubtitulo").value;
-        // var div = document.getElementById("divResultado");
-        //   div.innerHTML = "<h1>" + titulo +"</h1>"+ "\n" + subtitulo;
-        // }
+         
 
-        $(document.body).ready(function () {
+        $(document.body).ready(function() {
             textos = ['Compartilhe fotos', 'Publique textos', 'Conheça pessoas', 'Converse Muito', 'Divirta-se', 'Assista e compartilhe videos'];
             $('#textos').text(textos[0]);
-            setInterval(function () {
-                var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
-                $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
-            },
+            setInterval(function() {
+                    var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
+                    $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
+                },
                 1500); // segundo
         });
 
@@ -343,6 +378,7 @@
             publicacaoColor.style.backgroundColor = "#143258"
             publicacaoColor.style.border = "solid 10px #00b8ff"
         }
+
         function ModoClaro() {
             var body = document.getElementById("fundo")
             var publicacaoColor = document.getElementById("geral")
@@ -354,11 +390,10 @@
 
         function pessoaQueLogou() {
             pessoaLogada = document.getElementById("pessoaLogada")
-            pessoaLogada.innerHTML = usuarioLogado
+            pessoaLogada.innerHTML = usuarioLogado.nomeUsuario
         }
         pessoaQueLogou();
         carregaSugestoesAmigos();
-
     </script>
 </body>
 

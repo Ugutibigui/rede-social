@@ -1,63 +1,63 @@
 let usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual"))
-if(usuarioLogado.length > 0) location.href = "../pages/page.html"
 
-var usuarios = JSON.parse( localStorage.getItem("usuarios"))
+
+var usuarios = JSON.parse(localStorage.getItem("usuarios"))
 
 var usuarios
 if (localStorage.getItem("usuarios") !== null) {
-usuarios = JSON.parse( localStorage.getItem("usuarios"))
-}else{
-  usuarios = []
+    usuarios = JSON.parse(localStorage.getItem("usuarios"))
+} else {
+    usuarios = []
 }
+let fotoUsuario = document.getElementById("caixaTextoFoto").value
+    //ver oque esta escrito na senha
 
-//ver oque esta escrito na senha
-
-function mostrarSenha(){
+function mostrarSenha() {
     var tipo = document.getElementById("senha")
-    if(tipo.type == "password"){
+    if (tipo.type == "password") {
         tipo.type = "text";
-    }else{
+    } else {
         tipo.type = "password"
     }
 
 }
-function mostrarSenhas(){
+
+function mostrarSenhas() {
     var tipo = document.getElementById("senhas")
-    if(tipo.type == "password"){
+    if (tipo.type == "password") {
         tipo.type = "text";
-    }else{
+    } else {
         tipo.type = "password"
     }
 
 }
 //--------------------------------------------------------------------------------
+function cadastrarNovoUsuario() {
+    // pegar o que a pessoa digitou no input nomeUsuario
+    let nomeUsuario = document.getElementById("nomeUsuarios").value.trim()
+        // pegar o que a pessoa digitou no input senha
+    let senha = document.getElementById("senhas").value.trim()
+        // criar um id para essa pessoa
+    let idUsuario = usuarios.length + 1
 
-
-function cadastrarNovoUsuario(){
-   // pegar o que a pessoa digitou no input nomeUsuario
-   let nomeUsuario = document.getElementById("nomeUsuarios").value.trim()
-   // pegar o que a pessoa digitou no input senha
-   let senha = document.getElementById("senhas").value.trim()
-   // criar um id para essa pessoa
-   let idUsuario = usuarios.length + 1
-
-   // verificar se o nomeUsuario digitado nao é vazio
-   if(nomeUsuario===""){
+    let fotoUsuario = document.getElementById("caixaTextoFoto").value
+        // verificar se o nomeUsuario digitado nao é vazio
+    if (nomeUsuario === "") {
         // mostrar para o usuario que o nome de usuario é invalido
         alert("nome de usuario vazio")
-        //parar de executar minha funcao
+            //parar de executar minha funcao
         return;
-   }
-   // verificar se senha digitado nao é vazio
-   if(senha === ""){
-       alert("senha vazia é invalida")
-       return;
-   } 
-   //Não deixa entrar se o nome ja existe 
+    }
+    // verificar se senha digitado nao é vazio
+    if (senha === "") {
+        alert("senha vazia é invalida")
+        return;
+    }
+    //Não deixa entrar se o nome ja existe 
 
-   for( let i = 0; i < usuarios.length; i++){
-       console.log(i,usuarios[i])
-        if(usuarios[i].nomeUsuario === nomeUsuario){
+    for (let i = 0; i < usuarios.length; i++) {
+        console.log(i, usuarios[i])
+        if (usuarios[i].nomeUsuario === nomeUsuario) {
             console.log(i)
             alert("Ja existe")
             return
@@ -65,61 +65,79 @@ function cadastrarNovoUsuario(){
     }
 
     // cria novo objecto do novo usuario
-    let novoUsuario = {id: idUsuario, nomeUsuario: nomeUsuario, senha: senha}
+    let novoUsuario = { id: idUsuario, nomeUsuario: nomeUsuario, senha: senha, fotoUsuario: fotoUsuario }
 
     //salva novo usuario na lista
     usuarios.push(novoUsuario)
-    localStorage.setItem("usuarios",JSON.stringify(usuarios))
+    localStorage.setItem("usuarios", JSON.stringify(usuarios))
 
 }
 
-    
 
-function entrar(){
-   // pegar o que a pessoa digitou no input nomeUsuario
-   let nomeUsuario = document.getElementById("nomeUsuario").value
-   // pegar o que a pessoa digitou no input senha
-   let senha = document.getElementById("senha").value
 
-   // verificar se o nomeUsuario digitado nao é vazio
-   if(nomeUsuario===""){
+function entrar() {
+    // pegar o que a pessoa digitou no input nomeUsuario
+    let nomeUsuario = document.getElementById("nomeUsuario").value
+        // pegar o que a pessoa digitou no input senha
+    let senha = document.getElementById("senha").value
+
+    // verificar se o nomeUsuario digitado nao é vazio
+    if (nomeUsuario === "") {
         // mostrar para o usuario que o nome de usuario é invalido
         alert("nome de usuario vazio")
-        //parar de executar minha funcao
+            //parar de executar minha funcao
         return;
-   }
-   // verificar se senha digitado nao é vazio
-   if(senha === ""){
-       alert("senha vazia é invalida")
-       return;
-   } 
+    }
+    // verificar se senha digitado nao é vazio
+    if (senha === "") {
+        alert("senha vazia é invalida")
+        return;
+    }
 
-      var Userlogado = false;
-      let i = 0  
-      let usuarioAtual = nomeUsuario
-     for(; i < usuarios.length; i++){
-        if(usuarios[i].nomeUsuario === nomeUsuario && usuarios[i].senha === senha){
-          Userlogado = true;
-          localStorage.setItem("usuarioAtual" , JSON.stringify(usuarioAtual))
+    var Userlogado = false;
+    let i = 0
+    let usuarioAtual = { nomeUsuario: nomeUsuario}
+    for (; i < usuarios.length; i++) {
+        if (usuarios[i].nomeUsuario === nomeUsuario && usuarios[i].senha === senha) {
+            Userlogado = true;
+            localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
             console.log(i)
             break
-        }else Userlogado = false;
+        } else Userlogado = false;
     }
-        if(Userlogado){
-            window.location.href = "../pages/page.html"
-            
-        }else alert ("Nome de usuario ou senha incorretos")
+    if (Userlogado) {
+        window.location.href = "../pages/page.html"
+
+    } else alert("Nome de usuario ou senha incorretos")
 
 
     //if(usuario[0].nomeUsuario === nomeUsuario && usuarios[0].senha === senha){
-        // logado
+    // logado
     //}
 
-                
+
 }
 
-function mostrarUsuario(){
+function abrirAbaFoto() {
+    var display = document.getElementById("minhaDiv").style.display;
+    if (display == "none") {
+        document.getElementById("minhaDiv").style.display = 'block';
+        document.getElementById("fundoFalso").style.filter = "blur(30px)"
+    } else
+        document.getElementById('minhaDiv').style.display = 'none';
+
+}
+
+function fecharAddFoto() {
+    document.getElementById("minhaDiv").style.display = 'none';
+    document.getElementById("fundoFalso").style.filter = "none"
+
+}
+
+function mostrarUsuario() {
     console.log(usuarios)
 }
 
 console.log(usuarios)
+
+if (usuarioLogado.nomeUsuario.length > 0) location.href = "../pages/page.html"
