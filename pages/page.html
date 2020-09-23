@@ -123,8 +123,6 @@
         let todosAmigos = []
         let todosAmigosId = []
 
-
-
         function carregaPostsText() {
             let postagens = JSON.parse(localStorage.getItem("posts"))
             if (!postagens) return
@@ -168,18 +166,6 @@
         }
 
         carregaPostsImg()
-
-        function carregaAmiguinhos() {
-            let amigosAparece = JSON.parse(localStorage.getItem("amiguitos"))
-            if (!amigosAparece) return
-            let amigosTamanho = amigosAparece.length
-            let seuAmigoLocal = document.getElementById("seuAmigo")
-            for (let i = 0; i < amigosTamanho; i++) {
-                amigosAparece.innerHTML += `<p class="seusAmigos">${amigosAparece[i].amigos}</p>`
-                amigosAparece.innerHTML += `<button class="conversar"></button>`
-            }
-        }
-        carregaAmiguinhos()
 
         function publicarVideo() {
             let publicador = usuarioLogado.nomeUsuario
@@ -278,9 +264,8 @@
                     var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
                     console.log(inexistente)
                     if (inexistente === -1) {
-                        container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div></div>`
-                        let botaoAdicionar = document.getElementById("botaoAdicionar")
-                        botaoAdicionar.setAttribute("onclick", `adicionarAmigo(${usuariosAmigos[i].id} ,"${usuariosAmigos[i].nomeUsuario}")`)
+                        container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" onclick="adicionarAmigo(${usuariosAmigos[i].id} ,'${usuariosAmigos[i].nomeUsuario}')" class="botaoAdicionar">Adicionar</button></div></div>`
+                    
                             // container.appendChild(nomeUsuario);
                             // container.appendChild(botaoAdicionar)
                     }
@@ -306,6 +291,7 @@
         }
         carregaSugestoesAmigos()
 
+
         function adicionarAmigo(ADuser, ADnome) {
             carregaSugestoesAmigos()
             alert(`Adicionando o amigo ${ADnome}`)
@@ -328,31 +314,28 @@
                 // todosSeusAmigos.appendChild(botaoConversa)
                 // console.log(todosAmigos[i])
             }
-
-            let meagles = {
-                amigos: todosAmigos
-            }
-            localStorage.setItem("amiguitos", JSON.stringify(meagles))
+            
+            localStorage.setItem("amiguitos", JSON.stringify(todosAmigos))
 
             carregaSugestoesAmigos()
 
         }
 
+        function carregaAmiguinhos() {
+            let amigosAparece = JSON.parse(localStorage.getItem("amiguitos"))
+            if (!amigosAparece) return
+            let amigosTamanho = amigosAparece.length
+            let seuAmigoLocal = document.getElementById("seuAmigo")
+            for (let i = 0; i < amigosTamanho; i++) {
+                seuAmigoLocal.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${amigosAparece[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
+
+            }
+        }
+        carregaAmiguinhos()
+      
 
         console.log(todosAmigos.ADnome)
         console.log(todosAmigos)
-
-
-
-
-        function carregarAmigos() {
-            let todosAmigos = document.getElementById("seuAmigo")
-            todosAmigos.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${todosAmigos[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
-            
-            //let nomeAmigo = document.createElement("p")
-            //nomeAmigo.innerHTML = usuariosAtuais[i].nomeAmigo
-            //todos.appendChild(nomeAmigo);
-        }
 
 
         function Adicionar() {
