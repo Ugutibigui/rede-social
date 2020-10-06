@@ -487,3 +487,37 @@
             padding: 15px;
 
         }
+        .curtir{
+            float: right;
+            line-height: 35px;
+            margin-right: 574px;
+            margin-top: -5%;
+            background-color: aqua;
+            height: 35px;
+            width: 40px;
+            box-shadow: 4px 4px 0px rgb(255 0 0);
+            cursor: pointer;
+            color: white;
+            text-align: center;
+        }
+        .curtir:hover{
+            background-color: white;
+            color: green;
+        }
+        .curtirVideo{
+            text-align: center;
+            line-height: 35px;
+            float: right;
+            margin-right: 574px;
+            margin-top: -19%;
+            background-color: aqua;
+            height: 35px;
+            width: 40px;
+            box-shadow: 4px 4px 0px rgb(255 0 0);
+            cursor: pointer;
+            color: white;
+        }
+        .curtirVideo:hover{
+            background-color: white;
+            color: green;
+        }

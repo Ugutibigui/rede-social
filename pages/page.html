@@ -123,49 +123,50 @@
         let todosAmigos = []
         let todosAmigosId = []
 
-        function carregaPostsText() {
-            let postagens = JSON.parse(localStorage.getItem("posts"))
-            if (!postagens) return
-            let quantidade = postagens.length
-            let postagem = document.getElementById("pub")
-            for (let i = 0; i < quantidade; i++) {
+            let postagensText = JSON.parse(localStorage.getItem("posts"))
+            let postagensVide = JSON.parse(localStorage.getItem("postsVide"))
+            let postagensImg = JSON.parse(localStorage.getItem("postsImg"))
+            let todasPubs = []
 
-                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
-                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
-                postagem.innerHTML += `<p class="postagem-paragrafo">${postagens[i].content}</p>`
+            function ordemCrescente(a, b) {
+            return b.data - a.data;
+            }
+        
+            var agrupaPubs = todasPubs.concat(postagensText , postagensVide , postagensImg)
+            console.log("concat" , agrupaPubs)
+            console.log('publication' , todasPubs)
+            todasPubs = agrupaPubs
+            todasPubs.sort(ordemCrescente)
+
+        function carregaTodosPosts() {
+            let postagem = document.getElementById("pub")
+            let quantidade = todasPubs.length
+            console.log("quantidade" , quantidade)
+            for (let i = 0; i < quantidade; i++) {
+                console.log("todas pubs" ,  todasPubs)
+                console.log("pubs" , todasPubs.tipo)
+                if(todasPubs[i].tipo === "text") {
+                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
+                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
+                    postagem.innerHTML += `<p class="postagem-paragrafo">${todasPubs[i].content}</p>`
+                    postagem.innerHTML += `<div class="curtir">✔︎</div>`
+                    console.log("texto")
+                }else if (todasPubs[i].tipo === "video"){
+                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
+                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
+                    postagem.innerHTML += `<video controls class="postagem-video"><source src="${todasPubs[i].content}" type="video/mp4"></source></video>`
+                    postagem.innerHTML += `<div class="curtirVideo">✔︎</div>`
+                    console.log("video")
+                }else if (todasPubs[i].tipo === "img"){
+                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
+                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
+                    postagem.innerHTML += `<img class="postagem-img" src="${todasPubs[i].content}">`
+                    postagem.innerHTML += `<div class="curtir">✔︎</div>`
+                    console.log("img")
+                }
             }
         }
-        carregaPostsText()
-
-        function carregaPostsVide() {
-            let postagens = JSON.parse(localStorage.getItem("postsVide"))
-            if (!postagens) return
-            let quantidade = postagens.length
-            let postagem = document.getElementById("pub")
-            for (let i = 0; i < quantidade; i++) {
-
-                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
-                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
-                postagem.innerHTML += `<video controls class="postagem-video"><source src="${postagens[i].content}" type="video/mp4"></source></video>`
-            }
-        }
-
-        carregaPostsVide()
-
-        function carregaPostsImg() {
-            let postagens = JSON.parse(localStorage.getItem("postsImg"))
-            if (!postagens) return
-            let quantidade = postagens.length
-            let postagem = document.getElementById("pub")
-            for (let i = 0; i < quantidade; i++) {
-
-                postagem.innerHTML += `<div class="dataPub">${postagens[i].data}</div>`
-                postagem.innerHTML += `<p class="nomeDeQuemPublicou">${postagens[i].from}</p>`
-                postagem.innerHTML += `<img class="postagem-img" src="${postagens[i].content}">`
-            }
-        }
-
-        carregaPostsImg()
+        carregaTodosPosts()
 
         function publicarVideo() {
             let publicador = usuarioLogado.nomeUsuario
@@ -179,10 +180,12 @@
             postagem.innerHTML += `<div class="dataPub">${data}</div>`
             postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
             postagem.innerHTML += `<video controls class="postagem-video"><source src="${p}" type="video/mp4"></source></video>`
+            postagem.innerHTML += `<div class="curtirVideo">✔︎</div>`
             let vide = {
                 from: publicador,
                 content: p,
-                data: data
+                data: data,
+                tipo: "video"
             }
             publicacoes.push(vide)
             localStorage.setItem("postsVide", JSON.stringify(publicacoes))
@@ -219,10 +222,12 @@
             postagem.innerHTML += `<div class="dataPub">${data}</div>`
             postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
             postagem.innerHTML += `<p class="postagem-paragrafo">${p}</p>`
+            postagem.innerHTML += `<div class="curtir">✔︎</div>`
             let msg = {
                 from: publicador,
                 content: p,
-                data: data
+                data: data,
+                tipo: "text"
             }
             publicacoes.push(msg)
             localStorage.setItem("posts", JSON.stringify(publicacoes))
@@ -241,10 +246,12 @@
             postagem.innerHTML += `<div class="dataPub">${data}</div>`
             postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
             postagem.innerHTML += `<img class="postagem-img" src="${p}">`
+            postagem.innerHTML += `<div class="curtir">✔︎</div>`
             let Img = {
                 from: publicador,
                 content: p,
-                data: data
+                data: data,
+                tipo: "img"
             }
             publicacoes.push(Img)
             localStorage.setItem("postsImg", JSON.stringify(publicacoes))
