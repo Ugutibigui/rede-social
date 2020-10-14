@@ -26,7 +26,7 @@ function criarUsuario(novoUsuario){
     return true;
 }
 
-function excluirTodosUsuarios(){
-    localStorage.clear();
-}
+
+
+
 

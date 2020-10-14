@@ -499,6 +499,7 @@
             cursor: pointer;
             color: white;
             text-align: center;
+            font-size: 35px;
         }
         .curtir:hover{
             background-color: white;
@@ -516,6 +517,7 @@
             box-shadow: 4px 4px 0px rgb(255 0 0);
             cursor: pointer;
             color: white;
+            font-size: 35px;
         }
         .curtirVideo:hover{
             background-color: white;
