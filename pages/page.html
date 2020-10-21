@@ -134,7 +134,7 @@
         console.log("concat", agrupaPubs)
         console.log('publication', todasPubs)
         todasPubs = agrupaPubs
-        
+
 
         function carregaTodosPosts() {
             let postagem = document.getElementById("pub")
@@ -170,7 +170,7 @@
             let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-vide").value
             if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = JSON.parse(localStorage.getItem("postsVide"))
+            let publicacoes = chamarLocalStorageVide()
             if (!publicacoes) publicacoes = []
             let data = new Date()
             data = data.toString()
@@ -186,7 +186,7 @@
                 tipo: "video"
             }
             publicacoes.push(vide)
-            localStorage.setItem("postsVide", JSON.stringify(publicacoes))
+            localStorageVide(publicacoes)
         }
 
         function publicPic() {
@@ -211,7 +211,7 @@
             let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-escrita").value
             if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = JSON.parse(localStorage.getItem("posts"))
+            let publicacoes = chamarLocalStorageText()
             if (!publicacoes) publicacoes = []
             let data = new Date()
             data = data.toString()
@@ -227,7 +227,7 @@
                 tipo: "text"
             }
             publicacoes.push(msg)
-            localStorage.setItem("posts", JSON.stringify(publicacoes))
+            localStorageText(publicacoes)
 
         }
 
@@ -235,7 +235,7 @@
             let publicador = usuarioLogado.nomeUsuario
             let p = document.getElementById("pub-image").value
             if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = JSON.parse(localStorage.getItem("postsImg"))
+            let publicacoes = chamarLocalStorageImg()
             if (!publicacoes) publicacoes = []
             let data = new Date()
             data = data.toString()
@@ -251,7 +251,8 @@
                 tipo: "img"
             }
             publicacoes.push(Img)
-            localStorage.setItem("postsImg", JSON.stringify(publicacoes))
+            localStorageImg(publicacoes)
+
         }
 
         function carregaSugestoesAmigos() {
@@ -259,10 +260,7 @@
             let usuariosAmigos = usuariosAtuais();
             container.innerHTML = ""
             for (let i = 0; i < usuariosAmigos.length; i++) {
-                //cria paragrafo que aparece nome do usuario
                 if (usuarioLogado.nomeUsuario !== usuarios[i].nomeUsuario) {
-                    // container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" class="botaoAdicionar">Adicionar</button></div></div>`
-
                     var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
                     console.log(inexistente)
                     if (inexistente === -1) {

@@ -26,7 +26,23 @@ function criarUsuario(novoUsuario){
     return true;
 }
 
-
-
+function chamarLocalStorageVide(){
+    return JSON.parse(localStorage.getItem("postsVide"))
+}
+function chamarLocalStorageText(){
+    return JSON.parse(localStorage.getItem("posts"))
+}
+function chamarLocalStorageImg(){
+    return JSON.parse(localStorage.getItem("postsImg"))
+}
+function localStorageText(publicacoes){
+    localStorage.setItem("posts", JSON.stringify(publicacoes))
+}
+function localStorageImg(publicacoes){
+    localStorage.setItem("postsImg", JSON.stringify(publicacoes))
+}
+function localStorageVide(publicacoes){
+    localStorage.setItem("postsVide", JSON.stringify(publicacoes))
+}
 
 
