@@ -171,7 +171,11 @@
             font-size: 30px;
             display: flow-root;
         }
-        
+        .perfil{
+            margin-left: 20%;
+            float: right;
+            background-color: black;
+        }
         .text-seusAmigos {
             background-color: aquamarine;
             border: solid aqua 5px;
