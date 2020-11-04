@@ -1,11 +1,8 @@
-let usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual"))
+let usuarioLogado = usuarioLogadoBack()
+var usuarios = usuariosBack()
 
-
-var usuarios = JSON.parse(localStorage.getItem("usuarios"))
-
-var usuarios
-if (localStorage.getItem("usuarios") !== null) {
-    usuarios = JSON.parse(localStorage.getItem("usuarios"))
+if (usuariosBack() !== null) {
+    usuarios 
 } else {
     usuarios = []
 }
@@ -69,7 +66,7 @@ function cadastrarNovoUsuario() {
 
     //salva novo usuario na lista
     usuarios.push(novoUsuario)
-    localStorage.setItem("usuarios", JSON.stringify(usuarios))
+    mandarUsuarioBack(usuarios)
 
 }
 

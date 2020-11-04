@@ -117,18 +117,19 @@
     <script src="../js/barraCode.js"></script>
     <script src="../js/Back.js.js"></script>
     <script>
-        var usuarios = JSON.parse(localStorage.getItem("usuarios"))
-        var Amigos = JSON.parse(localStorage.getItem("novoUsuario"))
-        var usuarioLogado = JSON.parse(localStorage.getItem("usuarioAtual")) || []
+        var usuarios = usuariosBack()
+        var Amigos = amigosBack()
+        var usuarioLogado = usuarioLogadoBack()
         if (!usuarioLogado.nomeUsuario) location.href = "../pages/main.html"
+
+        let postagensText = postagensTextBack()
+        let postagensVide = postagensVideBack()
+        let postagensImg = postagensImgBack()
+
+        let todasPubs = []
 
         let todosAmigos = []
         let todosAmigosId = []
-
-        let postagensText = JSON.parse(localStorage.getItem("posts"))
-        let postagensVide = JSON.parse(localStorage.getItem("postsVide"))
-        let postagensImg = JSON.parse(localStorage.getItem("postsImg"))
-        let todasPubs = []
 
         var agrupaPubs = todasPubs.concat(postagensText, postagensVide, postagensImg)
         console.log("concat", agrupaPubs)
@@ -228,7 +229,6 @@
             }
             publicacoes.push(msg)
             localStorageText(publicacoes)
-
         }
 
         function publicarImagem() {
@@ -252,19 +252,21 @@
             }
             publicacoes.push(Img)
             localStorageImg(publicacoes)
-
         }
 
         function carregaSugestoesAmigos() {
             let container = document.getElementById("usuariosAdicionar")
             let usuariosAmigos = usuariosAtuais();
             container.innerHTML = ""
+            amigosQueJaAdicionou = carregaAmiguinhosBack()
             for (let i = 0; i < usuariosAmigos.length; i++) {
                 if (usuarioLogado.nomeUsuario !== usuarios[i].nomeUsuario) {
                     var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
                     console.log(inexistente)
                     if (inexistente === -1) {
-                        container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" onclick="adicionarAmigo(${usuariosAmigos[i].id} ,'${usuariosAmigos[i].nomeUsuario}')" class="botaoAdicionar">Adicionar</button></div></div>`
+                        if (amigosQueJaAdicionou.indexOf(usuarios[i].nomeUsuario) === -1) {
+                            container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" onclick="adicionarAmigo(${usuariosAmigos[i].id} ,'${usuariosAmigos[i].nomeUsuario}')" class="botaoAdicionar">Adicionar</button></div></div>`
+                        }
                     }
                 }
             }
@@ -280,19 +282,19 @@
             todosAmigosId.push(ADuser)
             var todosSeusAmigos = document.getElementById("seuAmigo")
             todosSeusAmigos.innerHTML = ""
-            let amiguinhos = JSON.parse(localStorage.getItem("amiguitos"))
+            let amiguinhos = amiguitosFunction()
             carregaSugestoesAmigos()
             for (let i = 0; i < todosAmigos.length; i++) {
                 todosSeusAmigos.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${todosAmigos[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
             }
 
-            localStorage.setItem("amiguitos", JSON.stringify(todosAmigos))
+            mandaLocalStorageAdd(todosAmigos)
 
             carregaSugestoesAmigos()
         }
 
         function carregaAmiguinhos() {
-            let amigosAparece = JSON.parse(localStorage.getItem("amiguitos"))
+            let amigosAparece = carregaAmiguinhosBack()
             if (!amigosAparece) return
             let amigosTamanho = amigosAparece.length
             let seuAmigoLocal = document.getElementById("seuAmigo")
