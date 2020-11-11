@@ -27,8 +27,9 @@
             <p id="usuario-que-logou" class="usuario-que-logou"> </p>
             <img src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo">
             <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
-            <div class="perfil">
-                <div class="fotoBarraPerfil">.</div>
+            <div class="perfil" onclick="Mudarestado('minhaDiv')">
+                <div class="fotoBarraPerfil" id="fotoBarraPerfil"></div>
+                <h3 class="nomeUserButtonPerfil" id="nomeUserButtonPerfil" >Teste</h3>
             </div>
 
             <div class="duvidas">
@@ -124,7 +125,7 @@
         var Amigos = amigosBack()
         var usuarioLogado = usuarioLogadoBack()
         if (!usuarioLogado.nomeUsuario) location.href = "../pages/main.html"
-
+        document.getElementById("nomeUserButtonPerfil").innerText = usuarioLogado.nomeUsuario
         let postagensText = postagensTextBack()
         let postagensVide = postagensVideBack()
         let postagensImg = postagensImgBack()
@@ -139,6 +140,31 @@
         console.log('publication', todasPubs)
         todasPubs = agrupaPubs
 
+        function carregaFotoPerfil(){
+            var foto = usuarioLogado.fotoUsuario
+            let divFoto = document.getElementById("paraFoto")
+            divFoto.style.backgroundImage = `url('${foto}')`
+            divFoto.style.backgroundRepeat = "no-repeat"
+            divFoto.style.backgroundSize = "cover"
+        }
+        carregaFotoPerfil()
+
+        function carregaMineFotoPerfil(){
+            var foto = usuarioLogado.fotoUsuario
+            let divFoto = document.getElementById("fotoBarraPerfil")
+            divFoto.style.backgroundImage = `url('${foto}')`
+            divFoto.style.backgroundSize = "cover"
+            
+        }
+        carregaMineFotoPerfil()
+
+       function carregaCapaPerfil(){
+            var foto
+            let divCapa = document.getElementById("capaPerfil")
+            divCapa.style.backgroundImage = "url('https://i.pinimg.com/originals/77/77/dd/7777dd0a47196bfcf3c6494e1a0e85cb.jpg')"
+            divCapa.style.backgroundSize = "cover"
+        }
+        carregaCapaPerfil()
 
         function carregaTodosPosts() {
             let postagem = document.getElementById("pub")
@@ -147,12 +173,16 @@
             for (let i = 0; i < quantidade; i++) {
                 console.log("todas pubs", todasPubs)
                 console.log("pubs", todasPubs.tipo)
-                if (todasPubs[i].tipo === "text") {
+                if (todasPubs[i] == null) {
+                    return
+                }
+                else if (todasPubs[i].tipo === "text") {
                     postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
                     postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
                     postagem.innerHTML += `<p class="postagem-paragrafo">${todasPubs[i].content}</p>`
                     postagem.innerHTML += `<div class="curtir">✔︎</div>`
                     console.log("texto")
+                    
                 } else if (todasPubs[i].tipo === "video") {
                     postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
                     postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
@@ -166,6 +196,7 @@
                     postagem.innerHTML += `<div class="curtir">✔︎</div>`
                     console.log("img")
                 }
+
             }
         }
         carregaTodosPosts()

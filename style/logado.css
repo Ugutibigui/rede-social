@@ -14,7 +14,9 @@
             position: absolute;
             cursor: pointer;
         }
-        
+        .configs:hover{
+            border: solid red 3px;
+        }
         .iconMenu {
             margin-left: 10px;
             font-size: 40px;
@@ -166,15 +168,42 @@
         .barra {
             background: linear-gradient(#526ba1, #3b5998);
             margin-top: 15;
-            height: 50px;
+            height: 55px;
             color: white;
             font-size: 30px;
             display: flow-root;
         }
         .perfil{
-            margin-left: 20%;
-            float: right;
-            background-color: black;
+            background-color: #13096e;
+            width: 175px;
+            height: 40px;
+            border-radius: 9px 20px 30px 40px;
+            margin: 0;
+            left: 83.90%;
+            margin-top: -2.25%;
+            margin-right: -42%;
+            position: absolute;
+            cursor: pointer;
+        }
+        .fotoBarraPerfil{
+            background-color: white;
+            border-radius: 100%;
+            width: 34px;
+            height: 34px;
+            margin: 0;
+            left: 10.78%;
+            margin-top: 2%;
+            margin-right: -42%;
+            position: absolute;
+            cursor: pointer;
+        }
+        .nomeUserButtonPerfil{
+            margin-left: 60px;
+            line-height: 43px;
+            font-family: burbank big condensed
+        }
+        .perfil:hover{
+            border: solid red 3px;
         }
         .text-seusAmigos {
             background-color: aquamarine;
@@ -484,6 +513,9 @@
             line-height: 45px;
             font-family: burbank big condensed;
             text-decoration: none;
+        }
+        .duvidas:hover{
+            border: solid red 3px;
         }
         .help{
             text-decoration: none;

@@ -68,6 +68,7 @@ function cadastrarNovoUsuario() {
     usuarios.push(novoUsuario)
     mandarUsuarioBack(usuarios)
 
+    alert("Novo usuario cadastrado, por favor faça login")
 }
 
 
@@ -90,13 +91,16 @@ function entrar() {
         alert("senha vazia é invalida")
         return;
     }
-
+    var fotoUser 
     var Userlogado = false;
     let i = 0
-    let usuarioAtual = { nomeUsuario: nomeUsuario}
+    
     for (; i < usuarios.length; i++) {
         if (usuarios[i].nomeUsuario === nomeUsuario && usuarios[i].senha === senha) {
+            fotoUser = usuarios[i].fotoUsuario
+            alert("brazileiro" + fotoUser)
             Userlogado = true;
+            let usuarioAtual = { nomeUsuario: nomeUsuario , fotoUsuario: fotoUser}
             localStorage.setItem("usuarioAtual", JSON.stringify(usuarioAtual))
             console.log(i)
             break
