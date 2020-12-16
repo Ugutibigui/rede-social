@@ -1,0 +1,20 @@
+1- colocar botão de personalização de background
+2- Colocar as fotos em quem ja esta adicionado 
+3- Adicionar codigo de emoticons ]
+4- Fazer funcionar o botão de like
+5- Colocar os modos de publicação publico e privado 
+6- Criar codigo para que as contas fiquem individuais 
+7- Criar historico de ações dentro da rede social 
+8- Fazer o botão de conversa funcionar 
+9- Arrumar a pagina de duvidas 
+10- Parte de informações pessoais dentro do perfil
+11- Criar a pagina para desenvolvedor 
+12- Criar a pagina de vendas MarketingPlace
+13- Criar pagina de Configurações da rede social 
+14- Colocar animações em tudo oque ocorrer na pagina 
+15- Colocar modo de pré visualização de pub de imagem 
+16- Criar modo e botão de excluir amigos 
+17- Criar modo de notificação de pedido de amizade
+18- Criar modo para apagar uma determinada publicação 
+19- Criar modo para bloquear uma pessoa e em perfil uma aba de bloqueados
+20- Criar o modo de desbloquear

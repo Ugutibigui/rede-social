@@ -1,68 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style/help.css">
-    <link rel="stylesheet" href="reser.css">
+    <link rel="shortcut icon" href="../images/iconeFace.png" type="image/x-icon">
     <title>Help</title>
 </head>
-
 <body class="fundo">
-    <button class="voltarPage"> <a href="../pages/page.html">Voltar à pagina Principal</a></button>
-
-    <ul class="menu">
-        <li>
-            <a class="link" href="">Home</a>
-            <div class="submenu">
-                <h1>HOME</h1>
-                <p>O facebook é a melhor plataforma, para você e seus amigos interagirem virtualmente <br> Melhor espaço
-                    de diversão</p>
+    <header class="barraAlto" id="barraAlto">
+        <div class="contentBarraAlto" id="contentBarraAlto">
+            <div class="itensSuperioresBarraAlto" id="itensSuperioresBarraAlto">
+                <div class="logoName">
+                    <img class="logoImg" src="../images/iconeFace.png" alt="Icone Facebook" onclick="irPagePrincipal()">
+                    <h3 class="textLogo">Central de Ajuda</h3>
+                </div>
+                <div class="barraFalsaBusca">
+                    <input type="text" placeholder="Pesquisar" name="Pesquisar" class="barraBusca" id="barraBusca">
+                </div>
+                <div class="botaoVoltarPageInicial">
+                    <button class="botaoVdd" onclick="irPagePrincipal()">Voltar Pagina Principal</button>
+                </div>
             </div>
-        </li>
-        <li>
-            <a class="link" href="">Sobre</a>
-            <div class="submenu">
-                <h1>SOBRE</h1>
-                <p>O início do Facebook se deu em 2003, quando Mark Zuckerberg, Dustin Moskovitz e Chris Hughes,
-                    estudantes na Universidade de Harvard, desenvolveram uma rede social exclusiva para o campus. Em
-                    2004, Zuckerberg criou o thefacebook.com, que se tornou o Facebook no ano seguinte.</p>
-                <p>Hoje, o Facebook é a maior rede social do mundo, com mais de 2 bilhões de usuários ativos. Na
-                    plataforma, os usuários podem criar um perfil ou uma fan page, interagindo entre si através de
-                    "likes", mensagens e compartilhamentos de imagens e textos. </p>
-                <p>De acordo com Mark Zuckerberg, o objetivo da rede social é conectar pessoas, criando um mundo mais
-                    transparente. Entre os valores da companhia estão a liberdade de compartilhamento de informações e
-                    de conexão, respeito à privacidade dos usuários, liberdade e fluxo livre de informações, igualdade
-                    de fundamentos, responsabilidade e transparência.</p>
+            <div class="itensInferioresBarraAlto" id="itensInferioresBarraAlto">
+                <div class="botoesMudancas">
+                    <div class="itemBotoesMudancas">Página inicial</div>
+                    <div class="itemBotoesMudancas"> <a href="../pages/help-criarConta.html">Como criar contas</a></div>
+                    <div class="itemBotoesMudancas">Gerenciamento da sua Conta</div>
+                    <div class="itemBotoesMudancas">Privacidade e segurança</div>
+                    <div class="itemBotoesMudancas">Politicas e denuncias</div>
+                </div>
             </div>
-        </li>
-        <li>
-            <a class="link" href="">Notícias</a>
-            <div class="submenu">
-                <h1>NOTÍCIAS</h1>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-                    pariatur.</p>
+        </div>
+    </header>
+    <div class="tudo">
+        <div class="content1">
+            <div class="tituloContent1">
+                <h1 class="tituloctt1">Dúvidas que talvez você tenha</h1>
             </div>
-        </li>
-        <li>
-            <a class="link" href="">Esporte</a>
-            <div class="submenu">
-                <h1>ESPORTE</h1>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa id est laborum.</p>
+            <div class="agrupacaoContent1">
+                <div class="perguntasComuns">
+                    <a class="linkPergunta" href="../pages/help-criarConta.html">Como faço para criar uma conta no Facebook?</a>
+                    <a class="linkPergunta" href="../pages/help-entrarNaConta.html">Como faço para entrar em minha conta do facebook?</a>
+                    <a class="linkPergunta" href="">Não consigo entrar em meu facebook.</a>
+                    <a class="linkPergunta" href="">Como faço para publicar no facebook?</a>
+                    <a class="linkPergunta" href="">Como faço para criar uma senha forte para minha conta do facebook?</a>
+                </div>
+                <div class="imagemContent1">
+                    <img class="imgCtt1"src="../images/duvidas.png" alt="imagem de Duvida">
+                </div>
             </div>
-        </li>
-        <li>
-            <a class="link" href="">Contato</a>
-            <div class="submenu">
-                <h1>CONTATO</h1>
-                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa id est laborum.</p>
+        </div>
+        <div class="content2">
+            <div class="tituloContent2">
+                <h1 class="tituloctt2">Tópicos populares</h1>
             </div>
-        </li>
-    </ul>
-
-
-
+            <div class="agrupacaoContent2">
+                <div class="itemContent2">
+                    <div class="imagemItemContent2">
+                        <img class="imgCtt2" src="../images/imagemTemporaria.png" alt="">
+                    </div>
+                    <div class="textosItemContent2">
+                        <h4 class="sobreContent2">SOBRE</h4>
+                        <h2 class="tituloTextContent2">Login e senha</h2>
+                        <h3 class="explicacaoTextContent2">Saiba como ver sua senha com apenas um click.</h3>
+                    </div>
+                </div>
+                <div class="itemContent2">
+                    <div class="imagemItemContent2">
+                        <img class="imgCtt2" src="../images/imagemTemporaria.png" alt="">
+                    </div>
+                    <div class="textosItemContent2">
+                        <h4 class="sobreContent2">SOBRE</h4>
+                        <h2 class="tituloTextContent2">Seu perfil e configurações</h2>
+                        <h3 class="explicacaoTextContent2">Saiba como adicionar uma foto do perfil, editar as suas informações e gerenciar as publicações na sua Linha do tempo.</h3>
+                    </div>
+                </div>
+                <div class="itemContent2">
+                    <div class="imagemItemContent2">
+                        <img class="imgCtt2" src="../images/imagemTemporaria.png" alt="">
+                    </div>
+                    <div class="textosItemContent2">
+                        <h4 class="sobreContent2">SOBRE</h4>
+                        <h2 class="tituloTextContent2">Aplicativos móveis e para desktop do Facebook</h2>
+                        <h3 class="explicacaoTextContent2">Saiba como instalar e atualizar o aplicatipo do Facebook no seu dispositivo.</h3>
+                    </div>
+                </div>
+                <div class="itemContent2">
+                    <div class="imagemItemContent2">
+                        <img class="imgCtt2" src="../images/imagemTemporaria.png" alt="">
+                    </div>
+                    <div class="textosItemContent2">
+                        <h4 class="sobreContent2">SOBRE</h4>
+                        <h2 class="tituloTextContent2">Mantendo a segurança da sua conta</h2>
+                        <h3 class="explicacaoTextContent2">Use os recursos de segurança para adicionar uma camada extra de proteção à sua conta.</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="content3">
+            <div class="conteudo">
+                <div class="tituloContent3">
+                    <h1 class="tituloctt3">Procurando outra coisa?</h1>
+                </div>
+                <div class="imagemItemContent2">
+                    <img class="imgCtt3" src="../images/imagemTemporaria.png" alt="">
+                </div>
+                <div class="paragrafoPequeno3">Saiba mais sobre como promover seu negócio no Facebook</div>
+            </div>
+        </div>
+    </div>
+    <footer class="rodape">
+        <h3 class="copryght">Facebook © 2020</h3>
+    </footer>
+    <script>
+        function irPagePrincipal(){
+        window.location.href = "../pages/main.html"
+        }   
+    </script>
 </body>
-
 </html>

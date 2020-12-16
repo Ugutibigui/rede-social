@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/configuracoes.css">
+    <title>Configuracoes</title>
+</head>
+<body class="fundo" id="fundo">
+    <div class="barra" id="barra">
+        <div class="modos">
+            <img title="Clique aqui para mudar o tema para claro" onclick="modoClaro()" id="modoClaro" class="modoLuminosidade" src="../images/sol.png" alt="">
+            <img title="Clique aqui para mudar o tema para escuro" onclick="modoEscuro()" id="modoEscuro" class="modoLuminosidade" src="../images/lua.png" alt="">
+        </div>
+        <div class="ladoDireito-Functions">
+        <div title="clique aqui para ver outras paginas" class="funcionalidades">
+            <div id="abas" class="functionMini">
+                <div class="menu_btn configs" onclick="funcoesAbrir()">
+                    <a href="#"></a>
+                    <h1 class="iconMenu">☟</h1>
+                    <div class="submenu" id="submenu">
+                        <ul>
+                            <li class="item" onclick="irPaginaInicial()">
+                                <div class="titleItem">Pagina Inicial</div>
+                            </li>
+                            <li class="item" onclick="irPageConfig()">
+                                <div class="titleItem">Configurações</div>
+                            </li>
+                            <li class="item" onclick="irPageLoja()">
+                                <div class="titleItem">MarketingPlace</div>
+                            </li>
+                            <li class="item"
+                                onclick="localStorage.setItem('usuarioAtual' , JSON.stringify('')); location.href='../pages/main.html'">
+                                <div class="titleItem">Sair</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            </div>
+            <div title="clique aqui para ir para a pagina de duvidas" id="duvidas" class="functionMini">
+                <h1><a class="help" href="../pages/help.html">?</a></h1>
+            </div>
+            <div title="veja aqui seu nome e sua foto" id="perfil" class="functionMedium">
+                <div class="fotoBarraPerfil" id="fotoBarraPerfil"></div>
+                <h3 class="nomeUserButtonPerfil" id="nomeUserButtonPerfil" >Teste</h3>
+            </div>
+        </div>
+        </div>
+    </div>
+    <div class="conteudo">
+        <div class="pagesConteudo">
+            <h1 class="tituloPagesConteudo">Configurações</h1>
+            <div class="content1Conteudo">
+                <div onclick="irPaginaInicial()" class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-house.png" alt=""></div><a class="nameContent" href="">Pagina inicial</a></div>
+                <div class="itemContent , estaAgora"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-config-geral.png" alt=""></div><a class="nameContent" href="">Geral</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-escudo.png" alt=""></div><a class="nameContent" href="">Segurança e login</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-suas-informacoes.png" alt=""></div><a class="nameContent" href="">Suas informações</a></div>
+            </div>
+            <hr>
+            <div class="content1Conteudo">
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-privacidade.png" alt=""></div><a class="nameContent" href="">Privacidade</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-perfil.png" alt=""></div><a class="nameContent" href="">Perfil</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-localizacao.png" alt=""></div><a class="nameContent" href="">Localização</a></div>
+            </div>
+            <hr>
+            <div class="content1Conteudo">
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-amizades.png" alt=""></div><a class="nameContent" href="">Amizades</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-notificacao.png" alt=""></div><a class="nameContent" href="">Notificações</a></div>
+                <div class="itemContent"><div class="espacoImgContent"><img class="imagemEspacoImg" src="../images/img-icon-ajuda.png" alt=""></div><a class="nameContent" href="">Ajuda</a></div>
+            </div>
+        </div>
+        <div class="contentConteudo">
+            <h1 class="tituloContentConteudo">Configurações gerais da conta</h1>
+            <hr>
+           <div class="informacoesContentConteudo">
+               <div class="info">
+                   <div class="titleInfo" id="nomeUserConfig">Nome</div>
+                   <div class="subleTitleInfo" id="subleTitleInfo">Teste</div>
+                   <div class="editarInfo">Editar</div>
+               </div>
+           </div> 
+           <hr>
+           <div class="informacoesContentConteudo">
+            <div class="info">
+                <div class="titleInfo">Nome de usuário</div>
+                <div class="subleTitleInfo" id="subleTitleInfo2">Teste</div>
+                <div class="editarInfo">Editar</div>
+            </div>
+            </div>
+            <hr>
+            <div class="informacoesContentConteudo">
+                <div class="info">
+                    <div class="titleInfo">Contato</div>
+                    <div class="subleTitleInfo" id="subleTitleInfo">Teste</div>
+                    <div class="editarInfo">Editar</div>
+                </div>
+            </div>
+            <hr>
+            <div class="informacoesContentConteudo">
+                <div class="info">
+                    <div class="titleInfo">Outros contatos</div>
+                    <div class="subleTitleInfo" id="subleTitleInfo">Teste</div>
+                    <div class="editarInfo">Editar</div>
+                </div>
+            </div>
+            <hr>
+            <div class="informacoesContentConteudo">
+                <div class="info">
+                    <div class="titleInfo">Confirmação de identidade</div>
+                    <div class="subleTitleInfo" id="subleTitleInfo">Teste</div>
+                    <div class="editarInfo">Editar</div>
+                </div>
+            </div>
+            <hr>    
+        </div>
+    </div>
+    <footer class="rodape"><h3 class="copryght">Facebook © 2020</h3></footer>
+    <script src="../js/Back.js.js"></script>
+    <script src="../js/barraCodeConfiguracoes.js"></script>
+    <script>
+        if (!usuarioLogado.nomeUsuario) location.href = "../pages/main.html"
+
+        var usuarioLogado = usuarioLogadoBack()
+
+        function funcoesAbrir(){
+    var display = document.getElementById("submenu").style.display;
+    if (display == "none") {
+        document.getElementById("submenu").style.display = 'block';
+        document.getElementById("submenu").style.transition = "1s"
+    } else {
+        document.getElementById('submenu').style.display = 'none';
+        document.getElementById("submenu").style.transition = "1s"
+    }
+    
+}
+function irPaginaInicial(){
+    window.location.href = "../pages/page.html"
+}
+function irPageConfig(){
+    window.location.href = "../pages/configuracoes.html"  
+}
+function irPageLoja(){
+    window.location.href = "../pages/marketingPlace.html"
+}
+function modoEscuro(){
+    var icone = document.getElementById("modoEscuro").style.opacity = "100%"
+    var iconeOposto = document.getElementById("modoClaro").style.opacity = "50%"
+    var fundo = document.getElementById("fundo")
+    fundo.style.backgroundColor = "#242526"
+    fundo.style.transition = "0.5s"
+
+    var barra =  document.getElementById("barra")
+    barra.style.backgroundColor = "#242526"
+    barra.style.transition = "0.5s"
+}
+function modoClaro(){
+    var icone = document.getElementById("modoClaro").style.opacity = "100%"
+    var iconeOposto = document.getElementById("modoEscuro").style.opacity = "50%"
+    var fundo = document.getElementById("fundo")
+    fundo.style.backgroundColor = "#dfdfdf"
+    fundo.style.transition = "0.5s"
+
+    var barra =  document.getElementById("barra")
+    barra.style.backgroundColor = "#cdcdcd"
+    barra.style.transition = "0.5s"
+}
+function infos(){
+    var localName = document.getElementById("subleTitleInfo")
+    localName.innerHTML = usuarioLogado.nomeUsuario
+
+    var localName2 = document.getElementById("subleTitleInfo2")
+    localName2.innerHTML = usuarioLogado.nomeUsuario
+    console.log(usuarioLogado)
+}
+infos()
+    </script>
+</body>
+</html>

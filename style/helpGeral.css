@@ -12,8 +12,8 @@
   unicode-bidi: embed;
 }
 a{
-  color: rgba(255, 255, 255, .5);
-  text-decoration: none;
+    color: rgba(255, 255, 255, .5);
+    text-decoration: none;
 }
 .fundo{
   background: fixed url("../images/img.png");
@@ -120,123 +120,111 @@ a{
   padding: 10px;
   margin: 0 auto;
   margin-top: 40px;
-}
-.content1{
-  height: 300px;
-}
-.tituloContent1{
-color: white;
-}
-.tituloctt1{
-font-family: burbank big condensed;
-font-size: 45px;
-}
-.agrupacaoContent1{
   display: flex;
 }
-.perguntasComuns{
-  width: 185px;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
+.maisPagesHelp{
+    display: flex;
+    flex-direction: column;
+    width: 250px;
 }
-.linkPergunta{
-  color: white;
-  background-color: #29487d;
-  width: 450px;
-  height: 350px;
-  margin-top: 10px;
-  font-size: 20px;
-  text-decoration: none;
-  padding: 10px;
-  border-radius: 30px;
+.proximaPage{
+    color: white;
+    text-decoration: none;
+    margin-top: 12px;
+    height: 30px;
+    line-height: 28px;
+    padding: 5px;
 }
-.linkPergunta:hover{
-  background-color: cornflowerblue;
-  transition: 0.5s;
-}
-.imagemContent1{
-  margin-left: 30%;
-  margin-top: -45px;
-}
-.imgCtt1{
-  width: 490px;
-  
-}
-.content2{
-  margin-top: 150px;
-}
-.tituloContent2{
-  color: white;
-}
-.tituloctt2{
-  font-family: burbank big condensed;
-  font-size: 45px;
-}
-.agrupacaoContent2{
-  display: flex;
-}
-.itemContent2{
-  width: 500px;
-  border: solid white 0.5px;
-}
-.imagemItemContent2{
-  padding: 10px;
-  margin-left: 4px;
-}
-.imgCtt2{
-  width: 200px;
-}
-.textosItemContent2{
-  padding: 10px;
-  height: 200px;
-  background-color: #00000091;
-}
-.sobreContent2{
-  color: red;
-}
-.tituloTextContent2{
-  color: white;
-  margin-top: 7px;
-  letter-spacing: 1px;
-  font-family: burbank big condensed;
-}
-.explicacaoTextContent2{
-  margin-top: 8px;
-  color: white;
-  opacity: 70%;
-}
-.content3{
-  margin-top: 120px;
+.proximaPage:hover{
+    background-color: rgba(0, 0, 0, 0.308);
+    transition: 0.5s;
 }
 .conteudo{
-  width: 40%;
-  padding: 10px;
-  margin: 0 auto;
-  margin-top: 40px;
+    background-color: rgba(156, 156, 156, 0.075);
 }
-.tituloContent3{
-  color: rgb(252, 31, 31);
+.tituloMaster{
+    color: white;
 }
-.tituloctt3{
-  text-align: center;
-  font-family: burbank big condensed;
-  font-size: 45px;
+.tituloTrem{
+    font-family: burbank big condensed;
+    font-size: 42px;
 }
-.imagemItemContent2{
-  padding: 10px;
+.textAviso{
+    color: white;
+    padding: 29px;
+    font-size: 23px;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.imgCtt3{
-  width: 300px;
-  margin: 0 auto;
-  margin-left: 20px;
-  margin-top: -15px;
+.part1{
+    margin-top: 5px;
 }
-.paragrafoPequeno3{
-  color: white;
-  margin-top: -40px;
-  font-size: 25px;
-  text-align:center;
+.tituloPart1{
+    color: white;
+    font-family: burbank big condensed;
+    letter-spacing: 1.3px;
+}
+.lista{
+    color: gainsboro;
+}
+.passos{
+    color: white;
+    font-size: 20px;
+    height: 40px;
+    margin-top: 4px;
+}
+.redireciona-text{
+    color: rgb(53, 18, 211);
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.redireciona-text:hover{
+    text-decoration: underline;
+    color: white;
+    transition: 0.5s;
+}
+.part2{
+    margin-top: 15px;
+}
+.tituloPart2{
+    color: white;
+    font-family: burbank big condensed;
+    letter-spacing: 1.3px;
+}
+.contentPart2{
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 15px;
+}
+.part3{
+    margin-top: 40px;
+}
+.tituloPart3{
+    color: white;
+    font-family: burbank big condensed;
+    letter-spacing: 1.3px;
+}
+.lista2{
+    color: gainsboro;
+}
+.passos2{
+    color: white;
+    font-size: 20px;
+    height: 30px;
+    margin-top: 4px;
+}
+.satisfacao{
+    margin-top: 25px;
+}
+.titleSatisfacao{
+    color: white;
+    font-family: burbank big condensed;
+    letter-spacing: 1.3px;
+}
+.opc1{
+    color: white;
+}
+.opc2{
+    color: white;
 }
 .rodape{
   background-color: black;

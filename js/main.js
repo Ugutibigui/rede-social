@@ -62,7 +62,7 @@ function cadastrarNovoUsuario() {
     }
 
     // cria novo objecto do novo usuario
-    let novoUsuario = { id: idUsuario, nomeUsuario: nomeUsuario, senha: senha, fotoUsuario: fotoUsuario }
+    let novoUsuario = { id: idUsuario, nomeUsuario: nomeUsuario, senha: senha, fotoUsuario: fotoUsuario}
 
     //salva novo usuario na lista
     usuarios.push(novoUsuario)

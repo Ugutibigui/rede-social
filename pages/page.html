@@ -12,27 +12,42 @@
 </head>
 
 <body class="fundo" id="fundo">
+    
+    <div class="divTrocaFotoPerfil" id="divTrocaFotoPerfil">
+        <button class="fechaAbaNovaFoto" onclick="fecharAbaNovaFotoPerfil()">Fechar</button>
+        <div>
+            <div class="tituloAbaNovaFoto">
+                <h1>Trocar a foto de perfil</h1>
+            </div>
+            <div class="localTrocarFotoPerfil">
+                <input class="linkFotoPerfilNova" type="text" name="Insira aqui o link da nova foto" id="textNovaFotoPerfil">
+                <input class="botaoAceitaNovaFotoPerfil" onclick="salvarNovaFotoPerfil()" type="submit" value="Pronto">
+            </div>
+        </div>
+    </div>
     <div>
         <div id="minhaDiv">
             <button onclick="fechaPerfil()" class="fechaPerfil">Fechar</button>
             <div class="capa" id="capaPerfil"></div>
             <div class="paraFoto fotoPerfil" id="paraFoto">
+                <img onclick="abrirTrocaFoto()" title="Troque aqui sua foto de perfil" class="iconTrocaFoto" src="../images/camera-troca.png" alt="Camera para trocar a foto do perfil">
             </div>
             <h1 class="nomePerfil" id="nomePerfil"></h1>
         </div>
     </div>
     <div class="fundoFalso" id="fundoFalso">
+        
         <div class="barra" id="barra">
             <h1 id="textos" class="texto-barra"></h1>
             <p id="usuario-que-logou" class="usuario-que-logou"> </p>
             <img src="../images/sol.png" onclick="ModoClaro()" alt="sol" class="modo">
             <img src="../images/lua.png" onclick="ModoEscuro()" alt="lua" class="modo1">
-            <div class="perfil" onclick="Mudarestado('minhaDiv')">
+            <div class="perfil" onclick="Mudarestado('minhaDiv')" title="Clique aqui para visualizar seu perfil">
                 <div class="fotoBarraPerfil" id="fotoBarraPerfil"></div>
                 <h3 class="nomeUserButtonPerfil" id="nomeUserButtonPerfil" >Teste</h3>
             </div>
 
-            <div class="duvidas">
+            <div class="duvidas" title="Clique aqui para tirar suas duvidas">
                 <h1>
                     <a class="help" href="../pages/help.html">?</a> </h1>
             </div>
@@ -44,14 +59,14 @@
                         <li class="item">
                             <div class="titleItem" onclick="Mudarestado('minhaDiv')">Perfil</div>
                         </li>
-                        <li class="item">
-                            <div class="titleItem">Item</div>
+                        <li class="item" onclick="irPageConfig()">
+                            <div class="titleItem">Configurações</div>
+                        </li>
+                        <li class="item" onclick="irPageLoja()">
+                            <div class="titleItem">MarketingPlace</div>
                         </li>
                         <li class="item">
-                            <div class="titleItem">Item</div>
-                        </li>
-                        <li class="item">
-                            <div class="titleItem">Item</div>
+                            <div class="titleItem" onclick="abrirModoDesenvolvedor()">Desenvolvedor</div>
                         </li>
                         <li class="item"
                             onclick="localStorage.setItem('usuarioAtual' , JSON.stringify('')); location.href='../pages/main.html'">
@@ -61,7 +76,27 @@
                 </div>
             </div>
         </div>
-
+        <div class="modoDesenvolvedor" id="modoDesenvolvedor">
+            <button class="botaoFechaDev" onclick="fecharModoDesenvolvedor()">Fechar</button>
+            <div class="textDev">
+                <h1 class="titleDev">Modo Desenvolvedor</h1>
+                <p class="paragrafoDev">Modifique o seu site do seu jeito</p>
+            </div>
+            <div class="funcoesDev">
+                <div class="coresDev">
+                    <h1 class="tituloCoresDev">----Cores----</h1>
+                    <div>
+                        Plano de Fundo <input type="text" id="trocaCorPlanoDeFundo"><br>
+                        Caixa de Pubs <input id="mudaCorCaixaPub" type="text"><br>
+                        Dentro Caixa de Pubs <input type="text" id="mudaCorDentroCaixaPub">
+                        Publicações <input id="mudaCorPublicacoes" type="text"><br>
+                        Background Amigos<input id="mudaCorAmigos" type="text"><br>
+                        amigos(separados)<input id="mudaCorAmigosIndividual" type="text">
+                    </div>
+                </div>
+            </div>
+            <input type="submit" name="Confirmar" id="salvarModificacoes" onclick="salvarModificacoes()">
+        </div>
 
         <div class="pessoas">
             <div id="sugestaoAmigos">
@@ -71,7 +106,7 @@
             </div>
 
             <div id="Amigos" class="Amigos">
-                <h2 class="text-seusAmigos">Seus Amigos</h2>
+                <h2 class="text-seusAmigos" id="text-seusAmigos">Seus Amigos</h2>
                 <div class="todosAmigos">
                     <div id="seuAmigo">
 
@@ -90,29 +125,28 @@
 
         <!--Isso só vai aparecer se o botão for clicado-->
         <div id="geral">
-            <div class="postagem">
-                <button onclick="publicPic()" id="pbc-img">P/ Imagem</button>
-                <button onclick="publicText()" id="pbc-text">P/ Texto</button>
-                <div class="textinhos">
-                    <h4 id="oquePublicar" class="oquePublicar">Oque você está pensando?</h2>
-                        <h4 id="pessoaLogada" class="pessoaLogada">Teste</h4>
+            <div class="postagem" id="postagemDentro">
+                <div class="alinharFotoCaixaPub">
+                <div class="imagemPubPerfil" id="imagemPubPerfil"></div>
+                <textarea onclick="aumentarTextareaPub()" style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30"
+                    rows="10" placeholder="Oque você está pensando hojê"></textarea><h4 id="fechaTextareaPub" class="fechaTextareaPub" onclick="diminuirTextareaPublicacao()">Diminuir</h4>
                 </div>
-                <textarea style="resize: none" name="pub-escrita" class="pub-escrita" id="pub-escrita" cols="30"
-                    rows="10"></textarea>
                 <textarea style="resize: none;" id="pub-image" placeholder="Insira o Link da imagem"></textarea>
                 <textarea style="resize: none;" id="pub-vide" placeholder="Insira o link do video"></textarea>
             </div>
-            <button class="publicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
-            <button class="publicarImagem" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
-            <button class="publicarVideo" onclick="publicarVideo()" id="pbc-text2">Publicar Video</button>
+            <div class="botoesPublicacao">
+            <button class="publicar , buttonPublicar" onclick="publicar()" id="pbc-text2">Publicar Texto</button>
+            <button class="publicarImagem , buttonPublicar" onclick="publicarImagem()" id="pbc-text2">Enviar Imagem</button>
+            <button class="publicarVideo , buttonPublicar" onclick="publicarVideo()" id="pbc-text2">Publicar Video</button>
+            </div>
         </div>
-
+        <hr class="hrGeral">
         <div id="publicacao">
             <div id="pub" class="pub">
                 <div id="text-dentro-pub"></div>
             </div>
         </div>
-
+ 
         <!--<div id="divResultado">-->
     </div>
     </div>
@@ -120,271 +154,7 @@
     </script>
     <script src="../js/barraCode.js"></script>
     <script src="../js/Back.js.js"></script>
-    <script>
-        var usuarios = usuariosBack()
-        var Amigos = amigosBack()
-        var usuarioLogado = usuarioLogadoBack()
-        if (!usuarioLogado.nomeUsuario) location.href = "../pages/main.html"
-        document.getElementById("nomeUserButtonPerfil").innerText = usuarioLogado.nomeUsuario
-        let postagensText = postagensTextBack()
-        let postagensVide = postagensVideBack()
-        let postagensImg = postagensImgBack()
-
-        let todasPubs = []
-
-        let todosAmigos = []
-        let todosAmigosId = []
-
-        var agrupaPubs = todasPubs.concat(postagensText, postagensVide, postagensImg)
-        console.log("concat", agrupaPubs)
-        console.log('publication', todasPubs)
-        todasPubs = agrupaPubs
-
-        function carregaFotoPerfil(){
-            var foto = usuarioLogado.fotoUsuario
-            let divFoto = document.getElementById("paraFoto")
-            divFoto.style.backgroundImage = `url('${foto}')`
-            divFoto.style.backgroundRepeat = "no-repeat"
-            divFoto.style.backgroundSize = "cover"
-        }
-        carregaFotoPerfil()
-
-        function carregaMineFotoPerfil(){
-            var foto = usuarioLogado.fotoUsuario
-            let divFoto = document.getElementById("fotoBarraPerfil")
-            divFoto.style.backgroundImage = `url('${foto}')`
-            divFoto.style.backgroundSize = "cover"
-            
-        }
-        carregaMineFotoPerfil()
-
-       function carregaCapaPerfil(){
-            var foto
-            let divCapa = document.getElementById("capaPerfil")
-            divCapa.style.backgroundImage = "url('https://i.pinimg.com/originals/77/77/dd/7777dd0a47196bfcf3c6494e1a0e85cb.jpg')"
-            divCapa.style.backgroundSize = "cover"
-        }
-        carregaCapaPerfil()
-
-        function carregaTodosPosts() {
-            let postagem = document.getElementById("pub")
-            let quantidade = todasPubs.length
-            console.log("quantidade", quantidade)
-            for (let i = 0; i < quantidade; i++) {
-                console.log("todas pubs", todasPubs)
-                console.log("pubs", todasPubs.tipo)
-                if (todasPubs[i] == null) {
-                    return
-                }
-                else if (todasPubs[i].tipo === "text") {
-                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
-                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
-                    postagem.innerHTML += `<p class="postagem-paragrafo">${todasPubs[i].content}</p>`
-                    postagem.innerHTML += `<div class="curtir">✔︎</div>`
-                    console.log("texto")
-                    
-                } else if (todasPubs[i].tipo === "video") {
-                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
-                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
-                    postagem.innerHTML += `<video controls class="postagem-video"><source src="${todasPubs[i].content}" type="video/mp4"></source></video>`
-                    postagem.innerHTML += `<div class="curtirVideo">✔︎</div>`
-                    console.log("video")
-                } else if (todasPubs[i].tipo === "img") {
-                    postagem.innerHTML += `<div class="dataPub">${todasPubs[i].data}</div>`
-                    postagem.innerHTML += `<p class="nomeDeQuemPublicou">${todasPubs[i].from}</p>`
-                    postagem.innerHTML += `<img class="postagem-img" src="${todasPubs[i].content}">`
-                    postagem.innerHTML += `<div class="curtir">✔︎</div>`
-                    console.log("img")
-                }
-
-            }
-        }
-        carregaTodosPosts()
-
-        function publicarVideo() {
-            let publicador = usuarioLogado.nomeUsuario
-            let p = document.getElementById("pub-vide").value
-            if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = chamarLocalStorageVide()
-            if (!publicacoes) publicacoes = []
-            let data = new Date()
-            data = data.toString()
-            let postagem = document.getElementById("pub")
-            postagem.innerHTML += `<div class="dataPub">${data}</div>`
-            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
-            postagem.innerHTML += `<video controls class="postagem-video"><source src="${p}" type="video/mp4"></source></video>`
-            postagem.innerHTML += `<div class="curtirVideo">✔︎</div>`
-            let vide = {
-                from: publicador,
-                content: p,
-                data: data,
-                tipo: "video"
-            }
-            publicacoes.push(vide)
-            localStorageVide(publicacoes)
-        }
-
-        function publicPic() {
-            var publicacao = document.getElementById("oquePublicar")
-            var desaparece = document.getElementById("pbc-img")
-            var Aparece = document.getElementById("pbc-text")
-            desaparece.style.opacity = "0"
-            Aparece.style.opacity = "100%"
-            publicacao.innerHTML = "Insira o endereço de sua imagem"
-        }
-
-        function publicText() {
-            var publicacao = document.getElementById("oquePublicar")
-            var desaparece = document.getElementById("pbc-text")
-            var Aparece = document.getElementById("pbc-img")
-            desaparece.style.opacity = "0"
-            Aparece.style.opacity = "100%"
-            publicacao.innerHTML = "Oque você está pensando?"
-        }
-
-        function publicar() {
-            let publicador = usuarioLogado.nomeUsuario
-            let p = document.getElementById("pub-escrita").value
-            if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = chamarLocalStorageText()
-            if (!publicacoes) publicacoes = []
-            let data = new Date()
-            data = data.toString()
-            let postagem = document.getElementById("pub")
-            postagem.innerHTML += `<div class="dataPub">${data}</div>`
-            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
-            postagem.innerHTML += `<p class="postagem-paragrafo">${p}</p>`
-            postagem.innerHTML += `<div class="curtir">✔︎</div>`
-            let msg = {
-                from: publicador,
-                content: p,
-                data: data,
-                tipo: "text"
-            }
-            publicacoes.push(msg)
-            localStorageText(publicacoes)
-        }
-
-        function publicarImagem() {
-            let publicador = usuarioLogado.nomeUsuario
-            let p = document.getElementById("pub-image").value
-            if (!p) return alert("Sua publicação está vazia")
-            let publicacoes = chamarLocalStorageImg()
-            if (!publicacoes) publicacoes = []
-            let data = new Date()
-            data = data.toString()
-            let postagem = document.getElementById("pub")
-            postagem.innerHTML += `<div class="dataPub">${data}</div>`
-            postagem.innerHTML += `<p class="nomeDeQuemPublicou">${publicador}</p>`
-            postagem.innerHTML += `<img class="postagem-img" src="${p}">`
-            postagem.innerHTML += `<div class="curtir">✔︎</div>`
-            let Img = {
-                from: publicador,
-                content: p,
-                data: data,
-                tipo: "img"
-            }
-            publicacoes.push(Img)
-            localStorageImg(publicacoes)
-        }
-
-        function carregaSugestoesAmigos() {
-            let container = document.getElementById("usuariosAdicionar")
-            let usuariosAmigos = usuariosAtuais();
-            container.innerHTML = ""
-            amigosQueJaAdicionou = carregaAmiguinhosBack()
-            for (let i = 0; i < usuariosAmigos.length; i++) {
-                if (usuarioLogado.nomeUsuario !== usuarios[i].nomeUsuario) {
-                    var inexistente = todosAmigosId.indexOf(usuariosAmigos[i].id)
-                    console.log(inexistente)
-                    if (inexistente === -1) {
-                        if (amigosQueJaAdicionou.indexOf(usuarios[i].nomeUsuario) === -1) {
-                            container.innerHTML += `<div class="divUser"><p class="users">${usuariosAmigos[i].nomeUsuario}</p><div class="doButton"><button id="botaoAdicionar" onclick="adicionarAmigo(${usuariosAmigos[i].id} ,'${usuariosAmigos[i].nomeUsuario}')" class="botaoAdicionar">Adicionar</button></div></div>`
-                        }
-                    }
-                }
-            }
-            console.log(todosAmigosId)
-        }
-        carregaSugestoesAmigos()
-
-
-        function adicionarAmigo(ADuser, ADnome) {
-            carregaSugestoesAmigos()
-            alert(`Adicionando o amigo ${ADnome}`)
-            todosAmigos.push(ADnome)
-            todosAmigosId.push(ADuser)
-            var todosSeusAmigos = document.getElementById("seuAmigo")
-            todosSeusAmigos.innerHTML = ""
-            let amiguinhos = amiguitosFunction()
-            amiguinhos.push(ADnome)
-            carregaSugestoesAmigos()
-            for (let i = 0; i < todosAmigos.length; i++) {
-                todosSeusAmigos.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${todosAmigos[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
-            }
-
-            mandaLocalStorageAdd(todosAmigos)
-
-            carregaSugestoesAmigos()
-        }
-
-        function carregaAmiguinhos() {
-            let amigosAparece = carregaAmiguinhosBack()
-            if (!amigosAparece) return
-            let amigosTamanho = amigosAparece.length
-            let seuAmigoLocal = document.getElementById("seuAmigo")
-            for (let i = 0; i < amigosTamanho; i++) {
-                seuAmigoLocal.innerHTML += `<div class="divAmigo"><p class="seusAmigos">${amigosAparece[i]}</p><div class="doButtonAmigo"><button class="conversar">Conversar</button></div></div>`
-
-            }
-        }
-        carregaAmiguinhos()
-
-
-        console.log(todosAmigos.ADnome)
-        console.log(todosAmigos)
-
-
-        function Adicionar() {
-            usuarios[0].amigos = [1]
-        }
-
-
-
-        $(document.body).ready(function () {
-            textos = ['Compartilhe fotos', 'Publique textos', 'Conheça pessoas', 'Converse Muito', 'Divirta-se', 'Assista e compartilhe videos', 'RPB Games'];
-            $('#textos').text(textos[0]);
-            setInterval(function () {
-                var indexTexto = Math.floor(Math.random() * textos.length); //Pegará um número aleatório entre 0 e a quantidade de textos;
-                $('#textos').text(textos[indexTexto]); //Definirá o texto de acordo com o índice sorteado
-            },
-                1500); // segundo
-        });
-
-        function ModoEscuro() {
-            var body = document.getElementById("fundo")
-            var publicacaoColor = document.getElementById("geral")
-            body.style.backgroundImage = "url('../images/img.png')"
-            publicacaoColor.style.backgroundColor = "#143258"
-            publicacaoColor.style.border = "solid 10px #00b8ff"
-        }
-
-        function ModoClaro() {
-            var body = document.getElementById("fundo")
-            var publicacaoColor = document.getElementById("geral")
-            body.style.backgroundImage = "url('../images/img2.jpg')"
-            body.style.backgroundSize = "1920px 1080px"
-            publicacaoColor.style.backgroundColor = "rgb(215 233 255)"
-            publicacaoColor.style.border = "solid 10px #00b8ff"
-        }
-
-        function pessoaQueLogou() {
-            pessoaLogada = document.getElementById("pessoaLogada")
-            pessoaLogada.innerHTML = usuarioLogado.nomeUsuario
-        }
-        pessoaQueLogou();
-        carregaSugestoesAmigos();
-    </script>
+    <script src="../js/page.js"></script>
 </body>
 
 </html>

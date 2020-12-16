@@ -1,4 +1,3 @@
-
 function usuariosAtuais() {
     return JSON.parse(localStorage.getItem('usuarios'));
 }

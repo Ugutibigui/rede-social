@@ -8,7 +8,7 @@
             width: 40px;
             height: 40px;
             margin: 0;
-            left: 96.78%;
+            left: 82.19%;
             margin-top: -2.25%;
             margin-right: -42%;
             position: absolute;
@@ -16,6 +16,7 @@
         }
         .configs:hover{
             border: solid red 3px;
+            transition: 0.2s;
         }
         .iconMenu {
             margin-left: 10px;
@@ -42,6 +43,7 @@
             color: red;
             border: 5px solid red;
             margin-left: -2px;
+            transition: 0.2s;
         }
         
         .submenu {
@@ -55,13 +57,13 @@
             display: block;
             margin: 0;
             left: -207px;
-            margin-top: 2.11%;
             margin-right: -42%;
             position: absolute;
             cursor: pointer;
             width: 249px;
             z-index: 1;
             box-shadow: 9px 13px 9px rgba(0, 0, 0, 0.5);
+            transition: 0.2s;
         }
         
         .item {
@@ -76,6 +78,7 @@
         
         .item:hover {
             background-color: #3c00ff;
+            transition: 0.5s;
         }
         
         .titleItem {
@@ -84,14 +87,14 @@
         
         .pessoas {
             margin: 0;
-            position: absolute;
-            left: 86.78%;
-            margin-top: -0.05%;
+            left: 84.78%;
+            margin-top: -0.50%;
             margin-right: -40%;
             border: solid #5a6069 1px;
-            width: 250px;
+            width: 300px;
             height: 100%;
             position: fixed;
+            overflow: auto;
         }
         
         .botaoAdicionar {
@@ -99,7 +102,7 @@
             width: 83px;
             height: 25px;
             align-items: center;
-            margin-top: 5px;
+            margin-top: 8px;
             border-radius: 15px;
             color: white;
             background-color: #082173;
@@ -113,6 +116,7 @@
         
         .botaoAdicionar:hover {
             background-color: #2c7fbf;
+            transition: 0.5s;
         }
         
         .nameSujestao {
@@ -145,7 +149,7 @@
             width: 83px;
             height: 25px;
             align-items: center;
-            margin-top: 5px;
+            margin-top: 8px;
             border-radius: 15px;
             color: white;
             background-color: #082173;
@@ -159,6 +163,7 @@
         
         .conversar:hover {
             background-color: #2c7fbf;
+            transition: 0.5s;
         }
         
         .todosAmigos {
@@ -167,19 +172,22 @@
         
         .barra {
             background: linear-gradient(#526ba1, #3b5998);
-            margin-top: 15;
             height: 55px;
             color: white;
             font-size: 30px;
             display: flow-root;
+            width: 100%;
+            position: fixed;
+            margin-top: -65px;
+            z-index: 1;
         }
         .perfil{
             background-color: #13096e;
-            width: 175px;
+            width: 216px;
             height: 40px;
             border-radius: 9px 20px 30px 40px;
             margin: 0;
-            left: 83.90%;
+            left: 87.6%;
             margin-top: -2.25%;
             margin-right: -42%;
             position: absolute;
@@ -204,6 +212,7 @@
         }
         .perfil:hover{
             border: solid red 3px;
+            transition: 0.2s;
         }
         .text-seusAmigos {
             background-color: aquamarine;
@@ -247,7 +256,43 @@
         
         .publicar {
             margin-top: 2%;
-            margin-left: 33%;
+            border: 0;
+            background-color: red;
+            color: white;
+            width: 120px;
+            height: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .publicarImagem{
+            border: 0;
+            background-color: red;
+            color: white;
+            width: 120px;
+            height: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .publicarVideo{
+            border: 0;
+            background-color: red;
+            color: white;
+            width: 120px;
+            height: 25px;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+        .publicar:hover{
+            background-color: brown;
+            transition: 0.5s;
+        }
+        .publicarImagem:hover{
+            background-color: brown;
+            transition: 0.5s;
+        }
+        .publicarVideo:hover{
+            background-color: brown;
+            transition: 0.5s;
         }
         
         #divResultado {
@@ -260,57 +305,90 @@
         }
         
         #geral {
-            width: 600px;
-            border: 10px solid rgb(0, 184, 255);
+            width: 680px;
+            border: 4px solid rgb(0, 184, 255);
             padding: 10px;
             margin: 0 auto;
-            margin-top: 5px;
+            margin-top: 64px;
             background-color: rgb(20, 50, 88);
+            border-radius: 15px;
         }
         
         .postagem {
             padding: 5px;
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             color: #333;
-            background: #8af1ff
+            background: #8af1ff;
+            border-radius: 5px;
         }
         
+
+        .imagemPubPerfil{
+            background-color: red;
+            width: 40px;
+            height: 34px;
+            border-radius: 50%;
+            margin-left: 9px;
+        }
+
+        .alinharFotoCaixaPub{
+            display: flex;
+            align-items: center;
+        }
+
         .pub-escrita {
-            width: 582px;
-            height: 150px;
+            width: 91%;
+            height: 34px;
             margin-top: 5px;
             font-size: 20px;
+            border-radius: 15px;
+            margin-left: 15px;
+            float: right;
+            border-style: none;
         }
         
         .publicar {
-            margin-left: 24%;
+            margin-left: 18%;
         }
-        
-        .postagem-paragrafo {
-            width: 600px;
-            border: solid 5px #03dffc;
-            background-color: #435673;
-            padding: 10px;
-            margin: 0 auto;
-            margin-top: -5px;
-            font-size: 25px;
-            color: white;
-            display: block;
-            box-shadow: 6px 6px 0px rgb(255 0 0);
-            word-wrap: break-word;
+        .botoesPublicacao{
+            display: flex;
+            align-items: center;
+            margin-left: 19%;
         }
-        
-        .postagem-img {
-            width: 600px;
-            border: solid 5px #03dffc;
-            background-color: #435673;
-            padding: 10px;
-            margin: 0 auto;
-            margin-top: -3px;
-            font-size: 25px;
+        .buttonPublicar{
+            margin-top: 2%;
+            margin-left: 10px;
+            border: 0;
+            background-color: red;
             color: white;
-            display: block;
-            box-shadow: 6px 6px 0px rgb(255 0 0);
+            width: 120px;
+            height: 25px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        #pub-image{
+            resize: none;
+            margin-left: 150px;
+            border-radius: 15px;
+            border-style: none;
+            margin-top: 5px;
+        }
+        #pub-vide{
+            border-radius: 15px;
+            border-style: none;
+            margin-top: 5px;
+        }
+        .fechaTextareaPub{
+            background-color: red;
+            border-radius: 15px;
+            width: 60px;
+            height: 34px;
+            color: white;
+            cursor: pointer;
+            font-size: 12px;
+            line-height: 35px;
+            margin-left: 20px;
+            opacity: 0;
         }
         
         .oquePublicar {
@@ -328,19 +406,6 @@
         
         .data-pub {
             color: white;
-        }
-        
-        .postagem-video {
-            width: 600px;
-            border: solid 5px #03dffc;
-            background-color: #435673;
-            padding: 10px;
-            margin: 0 auto;
-            margin-top: -5px;
-            font-size: 25px;
-            color: white;
-            display: block;
-            box-shadow: 6px 6px 0px rgb(255 0 0);
         }
         
         .modo {
@@ -370,23 +435,19 @@
             width: 150px;
         }
         
-        .nomeDeQuemPublicou {
-            width: 600px;
-            border: solid 5px #03dffc;
-            background-color: #03dffc;
-            color: black;
-            padding: 10px;
-            margin: 0 auto;
-            margin-top: -12px;
-            font-size: 18px;
-            display: block;
-            font-family: 'Anton', sans-serif;
-            font-family: 'Pacifico', cursive;
-            box-shadow: 6px 6px 0px rgb(255 0 0);
+        .content-pub{
+            display: flex;
+            align-items: center;
+        }
+        .foto-pessoa-pub{
+            width: 50px;
+            height: 50px;
+            background-color:white ;
+            border-radius: 50%;
         }
         
         .dataPub {
-            margin-left: 54.5%;
+            margin-left: 56.5%;
             font-size: 13px;
             margin-top: 1%;
             display: inline-flex;
@@ -397,19 +458,105 @@
             text-align: center;
             box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
         }
-        
+        .pub-geral{
+            width: 680px;
+            border: 4px solid rgb(0, 184, 255);
+            padding: 10px;
+            margin: 0 auto;
+            margin-top:-12px;
+            background-color: rgb(20, 50, 88);
+            border-radius: 0px;
+            box-shadow: 6px 6px 0px rgb(255 0 0);
+        }
+        .hrGeral{
+            width: 720px;
+            margin-top: 30px;
+        }
+        .content-superior-pub{
+        display: flex;
+        align-items: center;
+        background-color: #03dffc;
+        border: solid 5px #03dffc;
+    }
+
+        .nomeDeQuemPublicou {
+            color: black;
+            padding: 10px;
+            font-family: 'Anton', sans-serif;
+            font-family: 'Pacifico', cursive;
+        }
+
+        .content-inferior-pub{
+            border: solid 5px #03dffc;
+            background-color: #435673;
+            padding: 10px;
+        }
+
+        .postagem-paragrafo {
+            font-size: 25px;
+            color: white;
+            word-wrap: break-word;
+        }
+        .postagem-video {
+            width: 650px;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+        .postagem-img {
+            width: 650px;
+            margin: 0 auto;
+            font-size: 25px;
+        }
+        .interacao-pub{
+            display: flex;
+            align-items: center;
+            margin: 0 auto;
+            padding: 6px;
+            margin-left: 25%;
+        }
+        .comentario-pub{
+            background-color: red;
+            border-radius: 6px;
+            width: 140px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .comentario-pub:hover{
+            background-color: rgb(184, 10, 45);
+            transition: 0.5s;
+        }
+        .curtida{
+            background-color: red;
+            border-radius: 6px;
+            width: 140px;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            margin-left: 8px;
+            cursor: pointer;
+        }
+        .curtida:hover{
+            background-color: rgb(184, 10, 45);
+            transition: 0.5s;
+        }
         .textinhos {
             display: flex;
         }
         
         .pessoaLogada {
             margin-left: 50%;
+            font-family: burbank Big condensed;
+            font-size: 30px;
         }
+
         
         .divUser {
             display: flex;
             background-color: red;
-            height: 35px;
+            height: 41px;
             margin-top: 3px;
             cursor: pointer;
         }
@@ -417,26 +564,28 @@
         .divAmigo {
             display: flex;
             background-color: red;
-            height: 35px;
+            height: 41px;
             margin-top: 3px;
             cursor: pointer;
         }
         
         .divAmigo:hover {
             background-color: #b3022e;
+            transition: 0.5s;
         }
         
         .divUser:hover {
             background-color: #b3022e;
+            transition: 0.5s;
         }
         
         .doButton {
-            margin-left: 162px;
+            margin-left: 190px;
             position: absolute;
         }
         
         .doButtonAmigo {
-            margin-left: 162px;
+            margin-left: 190px;
             position: absolute;
         }
         
@@ -504,7 +653,7 @@
             width: 40px;
             height: 40px;
             margin: 0;
-            left: 93.90%;
+            left: 84.9%;
             margin-top: -2.25%;
             margin-right: -42%;
             position: absolute;
@@ -516,6 +665,7 @@
         }
         .duvidas:hover{
             border: solid red 3px;
+            transition: 0.2s;
         }
         .help{
             text-decoration: none;
@@ -523,29 +673,11 @@
             padding: 15px;
 
         }
-        .curtir{
-            float: right;
-            line-height: 35px;
-            margin-right: 574px;
-            margin-top: -5%;
-            background-color: aqua;
-            height: 35px;
-            width: 40px;
-            box-shadow: 4px 4px 0px rgb(255 0 0);
-            cursor: pointer;
-            color: white;
-            text-align: center;
-            font-size: 35px;
-        }
-        .curtir:hover{
-            background-color: white;
-            color: green;
-        }
         .curtirVideo{
             text-align: center;
             line-height: 35px;
             float: right;
-            margin-right: 574px;
+            margin-right: 535px;
             margin-top: -19%;
             background-color: aqua;
             height: 35px;
@@ -558,4 +690,133 @@
         .curtirVideo:hover{
             background-color: white;
             color: green;
+            transition: 0.5s;
+        }
+        .fotoUsuariosSujest{
+            width: 12%;
+            height: 85%;
+            border-radius: 50%;
+            margin-left: 10px;
+            margin-top: 3px;
+        }
+        .fotoUsuariosSujest:hover{
+            width: 72%;
+            height: 464%;
+            border-radius: 0%;
+            margin-left: -220px;
+            margin-top: 0px;
+            z-index: 50;
+            border: 3px solid red;
+            padding: 7%;
+            background-color: darkblue;
+            transition: 0.5s;
+        }
+        .conversaAmigos{
+            background-color: black;
+            width: 150px;
+            height: 150px;
+        }
+        .iconTrocaFoto{
+            width: 17%;
+            background-color: white;
+            border-radius: 50%;
+            display: block;
+            margin-top: 81%;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+        .iconTrocaFoto:hover{
+            border: 3px solid rgb(50, 50, 255);
+            transition: 0.5s;
+        }
+        .divTrocaFotoPerfil{
+            background-color: rgb(34, 34, 160);
+            width: 1102px;
+            height: 67%;
+            top: 19%;
+            left: 24.7%;
+            margin-top: -50px;
+            margin-left: -50px;
+            position: fixed;
+            overflow: auto;
+            display: none;
+            z-index: 50;
+            border-radius: 15px;
+        }
+        .fechaAbaNovaFoto{
+            float: right;
+            cursor: pointer;
+        }
+        .tituloAbaNovaFoto{
+            text-align: center;
+            color: white;
+            font-size: 50px;
+            margin-top: 10px;
+            font-family: Burbank Big Condensed; 
+        }
+        .localTrocarFotoPerfil{
+            margin-top: 0px;
+            margin-bottom: 0px;
+            padding: 100px 0px 100px 21%;
+        }
+        .linkFotoPerfilNova{
+            width: 500px;
+            height: 30px;
+            border-radius: 15px;
+        }
+        .botaoAceitaNovaFotoPerfil{
+            width: 90px;
+            height: 31px;
+            background-color: crimson;
+            border-radius: 37px;
+            color: white;
+            cursor: pointer;
+        }
+        .botaoAceitaNovaFotoPerfil:hover{
+            background-color: rgb(255, 1, 52);
+            transition: 0.5s;
+        }
+        .modoDesenvolvedor{
+            display: none;
+            margin-top: 10px;
+            margin-left: 3%;
+            position: fixed;
+            background-color: darkblue;
+            width: 20%;
+            height: 60%;
+            overflow:auto; 
+            border-radius: 15px 15px 0px 0px;
+        }
+        .botaoFechaDev{
+            float: right;
+        }
+        .textDev{
+            color: white;
+            text-align: center;
+            background-color: red;
+        }
+        .titleDev{
+            font-size: 25px;
+        }
+        .paragrafoDev{
+            font-size: 20px;
+        }
+        .funcoesDev{
+            margin-top: 20px;
+            align-items: center;
+        }
+        .coresDev{
+            color: white;
+        }
+        .tituloCoresDev{
+            text-align: center;
+        }
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        ::-webkit-scrollbar-thumb {
+            -webkit-border-radius: 10px;
+            border-radius: 10px;
+            background: rgb(25, 2, 128); 
+            -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
         }
