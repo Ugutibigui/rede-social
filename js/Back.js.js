@@ -1,5 +1,5 @@
 function usuariosAtuais() {
-    return JSON.parse(localStorage.getItem('usuarios'));
+    return JSON.parse(localStorage.getItem('usuarios')) || []
 }
 
 function pegaNovoId() {
@@ -30,33 +30,33 @@ function mandarUsuarioBack(usuarios){
 }
 
 function usuariosBack() {
-    return JSON.parse(localStorage.getItem("usuarios"))
+    return JSON.parse(localStorage.getItem("usuarios")) || []
 }
 function amigosBack() {
-    return JSON.parse(localStorage.getItem("novoUsuario"))
+    return JSON.parse(localStorage.getItem("novoUsuario")) || []
 }
 function usuarioLogadoBack() {
     return JSON.parse(localStorage.getItem("usuarioAtual")) || []
 }
 
 function postagensTextBack() {
-    return JSON.parse(localStorage.getItem("posts"))
+    return JSON.parse(localStorage.getItem("posts")) || []
 }
 function postagensVideBack() {
-    return JSON.parse(localStorage.getItem("postsVide"))
+    return JSON.parse(localStorage.getItem("postsVide")) || []
 }
 function postagensImgBack() {
-    return JSON.parse(localStorage.getItem("postsImg"))
+    return JSON.parse(localStorage.getItem("postsImg")) || []
 }
 
 function chamarLocalStorageVide() {
-    return JSON.parse(localStorage.getItem("postsVide"))
+    return JSON.parse(localStorage.getItem("postsVide")) || []
 }
 function chamarLocalStorageText() {
-    return JSON.parse(localStorage.getItem("posts"))
+    return JSON.parse(localStorage.getItem("posts")) || []
 }
 function chamarLocalStorageImg() {
-    return JSON.parse(localStorage.getItem("postsImg"))
+    return JSON.parse(localStorage.getItem("postsImg")) || []
 }
 function localStorageText(publicacoes) {
     localStorage.setItem("posts", JSON.stringify(publicacoes))
@@ -69,13 +69,13 @@ function localStorageVide(publicacoes) {
 }
 
 function amiguitosFunction() {
-    return JSON.parse(localStorage.getItem("amiguitos"))
+    return JSON.parse(localStorage.getItem("amiguitos")) || []
 }
 
 function mandaLocalStorageAdd(todosAmigos) {
     localStorage.setItem("amiguitos", JSON.stringify(todosAmigos))
 }
 
-function carregaAmiguinhosBack() {
-    return JSON.parse(localStorage.getItem("amiguitos"))
+function carregaAmiguinhosBack() { 
+    return JSON.parse(localStorage.getItem("amiguitos")) || []
 }
